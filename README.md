@@ -119,4 +119,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ## Contact
 
-For any questions or inquiries, please reach out through the contact form on the website or via email at arunkumar@example.com.
+For any questions or inquiries, please reach out through the contact form on the website or via email at arun8778jul@gmail.com.
