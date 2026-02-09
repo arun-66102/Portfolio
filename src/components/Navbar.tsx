@@ -13,7 +13,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = ['Home', 'Skills', 'Projects', 'Certificates', 'Contact'];
+  const navItems = ['Home', 'Skills', 'Projects', 'Coding Profiles', 'Certificates', 'Contact'];
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${

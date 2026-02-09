@@ -1,4 +1,5 @@
 import Certificates from './components/Certificates';
+import CodingProfiles from './components/CodingProfiles';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
@@ -14,6 +15,7 @@ function App() {
         <Hero />
         <Skills />
         <Projects />
+        <CodingProfiles />
         <Certificates />
         <Contact />
       </main>
