@@ -69,7 +69,7 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 bg-secondary-100">
+    <section id="contact" className="py-20 bg-secondary-100/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-secondary-900 mb-4">
@@ -98,7 +98,7 @@ const Contact = () => {
                 <a
                   key={index}
                   href={info.href}
-                  className="flex items-center space-x-4 p-4 bg-secondary-200 rounded-lg hover:bg-secondary-300 transition-colors group"
+                  className="flex items-center space-x-4 p-4 bg-secondary-200/80 rounded-lg hover:bg-secondary-300 transition-colors group purple-border"
                 >
                   <div className="text-primary-600 group-hover:text-primary-700 transition-colors">
                     {info.icon}

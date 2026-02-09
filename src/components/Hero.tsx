@@ -47,11 +47,11 @@ const Hero = () => {
 
         <div className="flex justify-center items-center">
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary-400 to-primary-600 rounded-full blur-3xl opacity-30"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-accent-400 to-primary-600 rounded-full blur-3xl opacity-40"></div>
             <img
               src="/ARUNKUMAR K R_23CS020.jpg"
               alt="Arunkumar K R"
-              className="relative w-80 h-85 md:w-90 md:h-90 rounded-full object-cover border-4 border-white shadow-2xl mx-auto"
+              className="relative w-80 h-85 md:w-90 md:h-90 rounded-full object-cover border-4 border-accent-400 shadow-2xl mx-auto purple-glow"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjRjFGNUY5Ii8+CjxjaXJjbGUgY3g9IjIwMCIgY3k9IjE1MCIgcj0iNjAiIGZpbGw9IiM5Q0EzQUYiLz4KPHBhdGggZD0iTTIwMCAyNDBDMjQwIDI0MCAyODAgMjgwIDI4MCAzMjBIMTIwQzEyMCAyODAgMTYwIDI0MCAyMDAgMjQwWiIgZmlsbD0iIzlDQTNBRiIvPgo8L3N2Zz4K';

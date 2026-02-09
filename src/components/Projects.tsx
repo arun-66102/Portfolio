@@ -18,7 +18,7 @@ const Projects = () => {
       id: 'sentiment-analysis',
       title: 'RouteX - PDF Routing System',
       description: 'A system that routes PDF documents to the appropriate department based on content analysis.',
-      image: '/project2.jpg',
+      image: '/projects/routeX.png', // Add your image here
       technologies: ['Transformers','LLM','ChromaDB','Tesseract OCR','Semantic search'],
       liveUrl: 'https://pdf-router.streamlit.app/',
       githubUrl: 'https://github.com/arun-66102/PDF-Summarizer',
@@ -29,7 +29,7 @@ const Projects = () => {
       id: 'predictive-analytics',
       title: 'Just-Chat - RAG based chatbot',
       description: 'A chatbot that uses Retrieval-Augmented Generation (RAG) to answer questions based on a knowledge base.',
-      image: '/project3.jpg',
+      image: '/projects/just-chat.png',
       technologies: [],
       liveUrl: 'https://justice-chat-bot.streamlit.app/',
       githubUrl: 'https://github.com/arun-66102/Justice-Chat-Bot',
@@ -38,9 +38,9 @@ const Projects = () => {
     },
     {
       id: 'computer-vision',
-      title: 'CommunHub - Community help hub',
+      title: 'CommunHub - Community hub',
       description: 'A full-stack web application that allows users to post and find help requests in their community.',
-      image: '/project5.jpg',
+      image: '/projects/communHub.png',
       technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io'],
       liveUrl: 'https://communhub.netlify.app/',
       githubUrl: 'https://github.com/arun-66102/Community-Hub',
@@ -51,7 +51,7 @@ const Projects = () => {
       id: 'ml-classifier',
       title: 'Weather Prediction System',
       description: 'A machine learning model that predicts weather conditions based on historical data and current atmospheric conditions.',
-      image: '/project1.jpg',
+      image: '/projects/weatherModel.png',
       technologies: ['Python', 'TensorFlow', 'Pandas', 'Scikit-learn', 'NumPy'],
       githubUrl: 'https://github.com/arun-66102/Weather-Prediction-ML-model',
       date: '2025',
@@ -61,7 +61,7 @@ const Projects = () => {
       id: 'chatbot-ai',
       title: 'Encryptor - Java CLI App',
       description: 'A command-line interface application that encrypts passwords using AES encryption.',
-      image: '/project4.jpg',
+      image: '/projects/encryptor.jpeg',
       technologies: ['Java', 'AES', 'CLI'],
       githubUrl: 'https://github.com/arun-66102/Encrypted-Password-Manager',
       date: '2024',
@@ -70,7 +70,7 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-secondary-100">
+    <section id="projects" className="py-20 bg-secondary-100/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-secondary-900 mb-4">
@@ -85,14 +85,38 @@ const Projects = () => {
           {projects.map((project) => (
             <div
               key={project.id}
-              className="bg-secondary-200 rounded-lg shadow-md overflow-hidden card-hover border border-secondary-300"
+              className="bg-secondary-200/80 rounded-lg shadow-md overflow-hidden card-hover purple-border"
             >
               {/* Project Image */}
-              <div className="h-48 bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center">
-                <div className="text-white text-center p-4">
-                  <div className="text-6xl mb-2">🤖</div>
-                  <p className="text-sm font-medium">Project Preview</p>
-                </div>
+              <div className="h-48 bg-gradient-to-br from-accent-500 to-primary-600 flex items-center justify-center relative overflow-hidden">
+                {project.image && project.image.startsWith('/projects/') ? (
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = 'none';
+                      target.parentElement!.innerHTML = `
+                        <div class="text-white text-center p-4">
+                          <div class="text-6xl mb-2">🤖</div>
+                          <p class="text-sm font-medium">Project Preview</p>
+                        </div>
+                      `;
+                    }}
+                  />
+                ) : (
+                  <div className="text-white text-center p-4">
+                    <div className="text-6xl mb-2">
+                      {project.category === 'AI Automation' ? '🤖' :
+                       project.category === 'RAG Chatbot' ? '💬' :
+                       project.category === 'Full Stack Development' ? '🌐' :
+                       project.category === 'Machine Learning' ? '🧠' :
+                       project.category === 'Security' ? '🔒' : '🚀'}
+                    </div>
+                    <p className="text-sm font-medium">{project.title}</p>
+                  </div>
+                )}
               </div>
 
               {/* Project Content */}
@@ -143,7 +167,7 @@ const Projects = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center px-3 py-2 bg-secondary-300 text-secondary-800 text-sm font-medium rounded hover:bg-secondary-400 transition-colors"
+                      className="flex-1 inline-flex items-center justify-center px-3 py-2 bg-accent-200 text-accent-800 text-sm font-medium rounded hover:bg-accent-300 transition-colors"
                     >
                       <Github size={14} className="mr-1" />
                       Code
@@ -154,7 +178,7 @@ const Projects = () => {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center px-3 py-2 bg-primary-200 text-primary-800 text-sm font-medium rounded hover:bg-primary-300 transition-colors"
+                      className="flex-1 inline-flex items-center justify-center px-3 py-2 bg-accent-200 text-accent-800 text-sm font-medium rounded hover:bg-accent-300 transition-colors"
                     >
                       <ExternalLink size={14} className="mr-1" />
                       Live

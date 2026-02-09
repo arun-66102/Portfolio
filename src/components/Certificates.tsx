@@ -173,7 +173,7 @@ const Certificates = () => {
                       <div className="flex space-x-2 mt-4">
                         <button
                           onClick={() => handleViewCertificate(certificate)}
-                          className="flex-1 inline-flex items-center justify-center px-3 py-2 bg-primary-200 text-primary-800 text-sm font-medium rounded hover:bg-primary-300 transition-colors"
+                          className="flex-1 inline-flex items-center justify-center px-3 py-2 bg-accent-200 text-accent-800 text-sm font-medium rounded hover:bg-accent-300 transition-colors"
                         >
                           <Eye size={16} className="mr-1" />
                           View

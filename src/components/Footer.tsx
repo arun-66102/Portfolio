@@ -53,7 +53,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+            <h4 className="text-2xl font-bold mb-4 gradient-text">Quick Links</h4>
             <ul className="space-y-2">
               <li>
                 <a href="#home" className="text-secondary-300 hover:text-white transition-colors">
@@ -63,6 +63,11 @@ const Footer = () => {
               <li>
                 <a href="#skills" className="text-secondary-300 hover:text-white transition-colors">
                   Skills
+                </a>
+              </li>
+              <li>
+                <a href="#projects" className="text-secondary-300 hover:text-white transition-colors">
+                  Projects
                 </a>
               </li>
               <li>
@@ -79,7 +84,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
+            <h4 className="text-2xl font-bold mb-4 gradient-text">Contact Info</h4>
             <ul className="space-y-2 text-secondary-300">
               <li>Email: arun8778jul@gmail.com</li>
               <li>Phone: +91 87787 65734</li>

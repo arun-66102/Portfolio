@@ -10,24 +10,27 @@ interface Skill {
 
 const Skills = () => {
   const skills: Skill[] = [
-    { name: 'Python', level: 95, category: 'AI/ML', icon: <Brain size={24} /> },
+    { name: 'Python', level: 95, category: 'Programming', icon: <Code size={24} /> },
     { name: 'Machine Learning', level: 90, category: 'AI/ML', icon: <Brain size={24} /> },
     { name: 'Deep Learning', level: 85, category: 'AI/ML', icon: <Brain size={24} /> },
     { name: 'OpenCV', level: 88, category: 'AI/ML', icon: <Brain size={24} /> },
     { name: 'TensorFlow/PyTorch', level: 82, category: 'AI/ML', icon: <Brain size={24} /> },
-    { name: 'Data Science', level: 92, category: 'Data Science', icon: <Database size={24} /> },
-    { name: 'JavaScript/TypeScript', level: 75, category: 'Frontend', icon: <Code size={24} /> },
+    { name: 'JavaScript', level: 75, category: 'Frontend', icon: <Code size={24} /> },
     { name: 'React.js', level: 70, category: 'Frontend', icon: <Globe size={24} /> },
-    { name: 'Java', level: 78, category: 'Backend', icon: <Server size={24} /> },
+    { name: 'Java', level: 78, category: 'Programming', icon: <Code size={24} /> },
     { name: 'SQL', level: 85, category: 'Database', icon: <Database size={24} /> },
-    { name: 'Problem Solving', level: 95, category: 'Soft Skills', icon: <Brain size={24} /> },
+    { name: 'MongoDB', level: 85, category: 'Database', icon: <Database size={24} /> },
+    { name: 'Problem Solving', level: 95, category: 'Programming', icon: <Brain size={24} /> },
     { name: 'RHCSA (Linux)', level: 78, category: 'DevOps', icon: <Shield size={24} /> },
+    { name: 'Node.js', level: 78, category: 'Backend', icon: <Server size={24} /> },
+    { name: 'Flask', level: 78, category: 'Backend', icon: <Server size={24} /> },
+    { name: 'FastAPI', level: 78, category: 'Backend', icon: <Server size={24} /> },
   ];
 
   const categories = Array.from(new Set(skills.map(skill => skill.category)));
 
   return (
-    <section id="skills" className="py-20 bg-secondary-100">
+    <section id="skills" className="py-20 bg-secondary-100/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-secondary-900 mb-4">
@@ -46,7 +49,7 @@ const Skills = () => {
                 {skills
                   .filter(skill => skill.category === category)
                   .map((skill) => (
-                    <div key={skill.name} className="bg-secondary-200 rounded-lg p-6 card-hover border border-secondary-300">
+                    <div key={skill.name} className="bg-secondary-200/80 rounded-lg p-6 card-hover purple-border">
                       <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center space-x-3">
                           <div className="text-primary-600">
@@ -62,7 +65,7 @@ const Skills = () => {
                       </div>
                       <div className="w-full bg-secondary-300 rounded-full h-2">
                         <div
-                          className="bg-gradient-to-r from-primary-500 to-primary-600 h-2 rounded-full transition-all duration-1000 ease-out"
+                          className="bg-gradient-to-r from-accent-400 via-primary-500 to-accent-600 h-2 rounded-full transition-all duration-1000 ease-out"
                           style={{ width: `${skill.level}%` }}
                         ></div>
                       </div>

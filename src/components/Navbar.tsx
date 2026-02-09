@@ -17,7 +17,7 @@ const Navbar = () => {
 
   return (
     <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-secondary-100/95 backdrop-blur-sm shadow-lg border border-secondary-200' : 'bg-transparent'
+      scrolled ? 'bg-secondary-100/95 backdrop-blur-sm shadow-lg purple-border' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -63,7 +63,7 @@ const Navbar = () => {
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-secondary-100 shadow-lg border border-secondary-200">
+        <div className="md:hidden bg-secondary-100 shadow-lg purple-border">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
               <a

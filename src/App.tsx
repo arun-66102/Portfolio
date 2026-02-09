@@ -8,7 +8,7 @@ import Skills from './components/Skills';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-secondary-50 to-secondary-100">
+    <div className="min-h-screen">
       <Navbar />
       <main>
         <Hero />
