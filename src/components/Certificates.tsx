@@ -7,6 +7,7 @@ interface Certificate {
   issuer: string;
   date: string;
   file: string;
+  paperUrl?: string;
   category: string;
 }
 
@@ -18,7 +19,7 @@ const Certificates = () => {
       id: 'data-science',
       name: 'Data Science Certificate',
       issuer: 'Kaggle',
-      date: '2024',
+      date: '2025',
       file: '/Data_Science.pdf',
       category: 'Data Science'
     },
@@ -26,7 +27,7 @@ const Certificates = () => {
       id: 'full-stack',
       name: 'Full Stack Development',
       issuer: 'Code Red',
-      date: '2024',
+      date: '2025',
       file: '/Full_Stack.pdf',
       category: 'Web Development'
     },
@@ -58,7 +59,7 @@ const Certificates = () => {
       id: 'opencv',
       name: 'OpenCV Computer Vision',
       issuer: 'OpenCV University',
-      date: '2024',
+      date: '2025',
       file: '/OpenCV.pdf',
       category: 'AI/ML'
     },
@@ -73,7 +74,7 @@ const Certificates = () => {
       id: 'problem-solving',
       name: 'Problem Solving & Algorithms',
       issuer: 'Hackerrank',
-      date: '2024',
+      date: '2026',
       file: '/Problem_Solving(Intermediate).pdf',
       category: 'Programming'
     },
@@ -81,7 +82,7 @@ const Certificates = () => {
       id: 'rhcsa',
       name: 'RHCSA Certification',
       issuer: 'Red Hat',
-      date: '2024',
+      date: '2025',
       file: '/RHCSA_Certificate.pdf',
       category: 'DevOps'
     },
@@ -89,26 +90,31 @@ const Certificates = () => {
       id: 'ef-set',
       name: 'EF SET English Certificate',
       issuer: 'EF Education First',
-      date: '2024',
+      date: '2025',
       file: '/EF SET Certificate.pdf',
       category: 'Language'
     },
     {
       id: 'paper-publication',
       name: 'Research Paper Publication',
-      issuer: 'International Journal',
-      date: '2024',
+      issuer: 'IEEE Conference',
+      date: '2025',
       file: '/PaperPublication_Certificate.pdf',
+      paperUrl: 'https://share.google/KDswcnEHFFreizjOB', // Replace with actual paper URL
       category: 'Research'
     }
   ];
 
   const categories = Array.from(new Set(certificates.map(cert => cert.category)));
 
-  const handleViewCertificate = (file: string) => {
-    setSelectedCertificate(file);
-    // Open the file in a new tab for viewing
-    window.open(file, '_blank');
+  const handleViewCertificate = (certificate: Certificate) => {
+    setSelectedCertificate(certificate.file);
+    // Open paper URL if available, otherwise open PDF
+    if (certificate.paperUrl) {
+      window.open(certificate.paperUrl, '_blank');
+    } else {
+      window.open(certificate.file, '_blank');
+    }
   };
 
   const handleDownloadCertificate = (file: string, fileName: string) => {
@@ -166,7 +172,7 @@ const Certificates = () => {
                       
                       <div className="flex space-x-2 mt-4">
                         <button
-                          onClick={() => handleViewCertificate(certificate.file)}
+                          onClick={() => handleViewCertificate(certificate)}
                           className="flex-1 inline-flex items-center justify-center px-3 py-2 bg-primary-200 text-primary-800 text-sm font-medium rounded hover:bg-primary-300 transition-colors"
                         >
                           <Eye size={16} className="mr-1" />

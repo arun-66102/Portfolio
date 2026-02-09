@@ -6,7 +6,7 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
           <h2 className="text-4xl md:text-6xl font-bold text-secondary-900">
-            Hi, I'm <span className="gradient-text">Arunkumar K R</span>
+            I'm <span className="gradient-text">Arunkumar K R</span>
           </h2>
           <h3 className="text-2xl md:text-3xl text-secondary-700 font-medium">
             ML Engineer & AI Developer
@@ -51,7 +51,7 @@ const Hero = () => {
             <img
               src="/ARUNKUMAR K R_23CS020.jpg"
               alt="Arunkumar K R"
-              className="relative w-80 h-80 md:w-96 md:h-96 rounded-full object-cover border-4 border-white shadow-2xl mx-auto"
+              className="relative w-80 h-85 md:w-90 md:h-90 rounded-full object-cover border-4 border-white shadow-2xl mx-auto"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
                 target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjRjFGNUY5Ii8+CjxjaXJjbGUgY3g9IjIwMCIgY3k9IjE1MCIgcj0iNjAiIGZpbGw9IiM5Q0EzQUYiLz4KPHBhdGggZD0iTTIwMCAyNDBDMjQwIDI0MCAyODAgMjgwIDI4MCAzMjBIMTIwQzEyMCAyODAgMTYwIDI0MCAyMDAgMjQwWiIgZmlsbD0iIzlDQTNBRiIvPgo8L3N2Zz4K';
