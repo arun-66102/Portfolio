@@ -30,7 +30,7 @@ const Projects = () => {
       title: 'Just-Chat - RAG based chatbot',
       description: 'A chatbot that uses Retrieval-Augmented Generation (RAG) to answer questions based on a knowledge base.',
       image: '/projects/just-chat.png',
-      technologies: [],
+      technologies: ['Sentence-transformers','ChromaDB','RAG','Streamlit','Python'],
       liveUrl: 'https://justice-chat-bot.streamlit.app/',
       githubUrl: 'https://github.com/arun-66102/Justice-Chat-Bot',
       date: '2024',
