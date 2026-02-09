@@ -17,7 +17,7 @@ const Certificates = () => {
     {
       id: 'data-science',
       name: 'Data Science Certificate',
-      issuer: 'Professional Training Institute',
+      issuer: 'Kaggle',
       date: '2024',
       file: '/Data_Science.pdf',
       category: 'Data Science'
@@ -25,7 +25,7 @@ const Certificates = () => {
     {
       id: 'full-stack',
       name: 'Full Stack Development',
-      issuer: 'Coding Academy',
+      issuer: 'Code Red',
       date: '2024',
       file: '/Full_Stack.pdf',
       category: 'Web Development'
@@ -33,7 +33,7 @@ const Certificates = () => {
     {
       id: 'python',
       name: 'Python Programming',
-      issuer: 'Tech Institute',
+      issuer: 'Hackerrank',
       date: '2024',
       file: '/Python.pdf',
       category: 'Programming'
@@ -41,7 +41,7 @@ const Certificates = () => {
     {
       id: 'java',
       name: 'Java Development',
-      issuer: 'Programming School',
+      issuer: 'Hackerrank',
       date: '2024',
       file: '/Java.pdf',
       category: 'Programming'
@@ -49,7 +49,7 @@ const Certificates = () => {
     {
       id: 'sql',
       name: 'SQL Database Management',
-      issuer: 'Database Institute',
+      issuer: 'Hackerrank',
       date: '2024',
       file: '/SQL.pdf',
       category: 'Database'
@@ -57,7 +57,7 @@ const Certificates = () => {
     {
       id: 'opencv',
       name: 'OpenCV Computer Vision',
-      issuer: 'AI Training Center',
+      issuer: 'OpenCV University',
       date: '2024',
       file: '/OpenCV.pdf',
       category: 'AI/ML'
@@ -65,9 +65,16 @@ const Certificates = () => {
     {
       id: 'problem-solving',
       name: 'Problem Solving & Algorithms',
-      issuer: 'Competitive Programming',
+      issuer: 'Hackerrank',
       date: '2024',
       file: '/Problem_Solving.pdf',
+      category: 'Programming'
+    },{
+      id: 'problem-solving',
+      name: 'Problem Solving & Algorithms',
+      issuer: 'Hackerrank',
+      date: '2024',
+      file: '/Problem_Solving(Intermediate).pdf',
       category: 'Programming'
     },
     {
