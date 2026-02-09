@@ -1,4 +1,4 @@
-import { ExternalLink, Github, Calendar, Tag } from 'lucide-react';
+import { Calendar, ExternalLink, Github, Tag } from 'lucide-react';
 
 interface Project {
   id: string;
@@ -69,8 +69,6 @@ const Projects = () => {
     }
   ];
 
-  const categories = Array.from(new Set(projects.map(project => project.category)));
-
   return (
     <section id="projects" className="py-20 bg-secondary-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -83,88 +81,86 @@ const Projects = () => {
           </p>
         </div>
 
-        <div className="grid gap-12">
-          {categories.map((category) => (
-            <div key={category} className="space-y-6">
-              <h3 className="text-2xl font-semibold text-secondary-800 mb-6">{category}</h3>
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {projects
-                  .filter(project => project.category === category)
-                  .map((project) => (
-                    <div
-                      key={project.id}
-                      className="bg-secondary-200 rounded-lg shadow-md overflow-hidden card-hover border border-secondary-300"
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="bg-secondary-200 rounded-lg shadow-md overflow-hidden card-hover border border-secondary-300"
+            >
+              {/* Project Image */}
+              <div className="h-48 bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center">
+                <div className="text-white text-center p-4">
+                  <div className="text-6xl mb-2">🤖</div>
+                  <p className="text-sm font-medium">Project Preview</p>
+                </div>
+              </div>
+
+              {/* Project Content */}
+              <div className="p-6">
+                <div className="flex items-center justify-between mb-3">
+                  <h4 className="text-lg font-semibold text-secondary-900">
+                    {project.title}
+                  </h4>
+                  <div className="flex items-center text-xs text-secondary-500">
+                    <Calendar size={12} className="mr-1" />
+                    {project.date}
+                  </div>
+                </div>
+
+                <p className="text-secondary-600 text-sm mb-4 line-clamp-3">
+                  {project.description}
+                </p>
+
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.slice(0, 3).map((tech, index) => (
+                    <span
+                      key={index}
+                      className="inline-flex items-center px-2 py-1 bg-primary-200 text-primary-800 text-xs font-medium rounded"
                     >
-                      {/* Project Image */}
-                      <div className="h-48 bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center">
-                        <div className="text-white text-center p-4">
-                          <div className="text-6xl mb-2">🤖</div>
-                          <p className="text-sm font-medium">Project Preview</p>
-                        </div>
-                      </div>
-
-                      {/* Project Content */}
-                      <div className="p-6">
-                        <div className="flex items-center justify-between mb-3">
-                          <h4 className="text-lg font-semibold text-secondary-900">
-                            {project.title}
-                          </h4>
-                          <div className="flex items-center text-xs text-secondary-500">
-                            <Calendar size={12} className="mr-1" />
-                            {project.date}
-                          </div>
-                        </div>
-
-                        <p className="text-secondary-600 text-sm mb-4 line-clamp-3">
-                          {project.description}
-                        </p>
-
-                        {/* Technologies */}
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {project.technologies.slice(0, 3).map((tech, index) => (
-                            <span
-                              key={index}
-                              className="inline-flex items-center px-2 py-1 bg-primary-200 text-primary-800 text-xs font-medium rounded"
-                            >
-                              <Tag size={10} className="mr-1" />
-                              {tech}
-                            </span>
-                          ))}
-                          {project.technologies.length > 3 && (
-                            <span className="text-xs text-secondary-500">
-                              +{project.technologies.length - 3} more
-                            </span>
-                          )}
-                        </div>
-
-                        {/* Action Buttons */}
-                        <div className="flex space-x-2">
-                          {project.githubUrl && (
-                            <a
-                              href={project.githubUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex-1 inline-flex items-center justify-center px-3 py-2 bg-secondary-300 text-secondary-800 text-sm font-medium rounded hover:bg-secondary-400 transition-colors"
-                            >
-                              <Github size={14} className="mr-1" />
-                              Code
-                            </a>
-                          )}
-                          {project.liveUrl && (
-                            <a
-                              href={project.liveUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex-1 inline-flex items-center justify-center px-3 py-2 bg-primary-200 text-primary-800 text-sm font-medium rounded hover:bg-primary-300 transition-colors"
-                            >
-                              <ExternalLink size={14} className="mr-1" />
-                              Live
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
+                      <Tag size={10} className="mr-1" />
+                      {tech}
+                    </span>
                   ))}
+                  {project.technologies.length > 3 && (
+                    <span className="text-xs text-secondary-500">
+                      +{project.technologies.length - 3} more
+                    </span>
+                  )}
+                </div>
+
+                {/* Category Badge */}
+                <div className="mb-4">
+                  <span className="inline-flex items-center px-2 py-1 bg-secondary-300 text-secondary-700 text-xs font-medium rounded">
+                    {project.category}
+                  </span>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex space-x-2">
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center px-3 py-2 bg-secondary-300 text-secondary-800 text-sm font-medium rounded hover:bg-secondary-400 transition-colors"
+                    >
+                      <Github size={14} className="mr-1" />
+                      Code
+                    </a>
+                  )}
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 inline-flex items-center justify-center px-3 py-2 bg-primary-200 text-primary-800 text-sm font-medium rounded hover:bg-primary-300 transition-colors"
+                    >
+                      <ExternalLink size={14} className="mr-1" />
+                      Live
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           ))}
