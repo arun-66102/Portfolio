@@ -1,5 +1,4 @@
-import { Code2, ExternalLink, Github, RefreshCw, Target, Trophy } from 'lucide-react';
-import React, { useState } from 'react';
+import { Code2, ExternalLink, Github, Target, Trophy } from 'lucide-react';
 
 interface CodingProfile {
   id: string;
@@ -13,20 +12,9 @@ interface CodingProfile {
   url: string;
   username: string;
   color: string;
-  lastUpdated?: string;
-  liveStats?: any;
 }
 
 const CodingProfiles = () => {
-  const [lastRefresh, setLastRefresh] = useState<string>(new Date().toLocaleDateString());
-
-  // Manual update function - you can trigger this to refresh stats
-  const refreshStats = () => {
-    setLastRefresh(new Date().toLocaleDateString());
-    // In a real implementation, this would fetch from APIs
-    console.log('Stats refreshed - update your profile data manually in the code');
-  };
-
   const profiles: CodingProfile[] = [
     {
       id: 'leetcode',
@@ -39,8 +27,7 @@ const CodingProfiles = () => {
       ],
       url: 'https://leetcode.com/u/arunkumar_66/',
       username: 'arunkumar_66',
-      color: 'from-orange-400 to-yellow-500',
-      lastUpdated: lastRefresh
+      color: 'from-orange-400 to-yellow-500'
     },
     {
       id: 'gfg',
@@ -54,8 +41,7 @@ const CodingProfiles = () => {
       ],
       url: 'https://www.geeksforgeeks.org/profile/arun87pwrs',
       username: 'arun87pwrs',
-      color: 'from-green-400 to-emerald-500',
-      lastUpdated: lastRefresh
+      color: 'from-green-400 to-emerald-500'
     },
     {
       id: 'hackerrank',
@@ -69,8 +55,7 @@ const CodingProfiles = () => {
       ],
       url: 'https://www.hackerrank.com/profile/23cs020_kpriet',
       username: '23cs020_kpriet',
-      color: 'from-green-500 to-teal-500',
-      lastUpdated: lastRefresh
+      color: 'from-green-500 to-teal-500'
     },
     {
       id: 'github',
@@ -84,8 +69,7 @@ const CodingProfiles = () => {
       ],
       url: 'https://github.com/arun-66102',
       username: 'arun-66102',
-      color: 'from-gray-600 to-gray-800',
-      lastUpdated: lastRefresh
+      color: 'from-gray-600 to-gray-800'
     }
   ];
 
@@ -99,16 +83,6 @@ const CodingProfiles = () => {
           <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
             My competitive programming journey and open source contributions across various platforms
           </p>
-          <div className="mt-4 flex items-center justify-center space-x-4">
-            <span className="text-sm text-secondary-500">Last updated: {lastRefresh}</span>
-            <button
-              onClick={refreshStats}
-              className="inline-flex items-center px-3 py-1 bg-accent-200 text-accent-800 text-sm rounded hover:bg-accent-300 transition-colors"
-            >
-              <RefreshCw size={14} className="mr-1" />
-              Refresh Stats
-            </button>
-          </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -194,21 +168,6 @@ const CodingProfiles = () => {
                 <div className="text-3xl font-bold mb-2">4</div>
                 <div className="text-accent-200">Active Platforms</div>
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Update Instructions */}
-        <div className="mt-12 text-center">
-          <div className="bg-secondary-200/60 rounded-lg p-6 max-w-2xl mx-auto">
-            <h4 className="text-lg font-semibold text-secondary-900 mb-3">
-              📊 How to Update Stats
-            </h4>
-            <div className="text-left text-secondary-600 space-y-2">
-              <p>• <strong>Manual Update:</strong> Edit the values in <code className="bg-secondary-300 px-2 py-1 rounded text-xs">src/components/CodingProfiles.tsx</code></p>
-              <p>• <strong>Live Data:</strong> For automatic updates, you can integrate platform APIs</p>
-              <p>• <strong>Refresh Button:</strong> Click "Refresh Stats" to update the timestamp</p>
-              <p>• <strong>Best Practice:</strong> Update stats monthly to keep portfolio current</p>
             </div>
           </div>
         </div>
