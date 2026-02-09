@@ -1,5 +1,4 @@
 import { Award, Download, Eye } from 'lucide-react';
-import { useState } from 'react';
 
 interface Certificate {
   id: string;
@@ -12,7 +11,6 @@ interface Certificate {
 }
 
 const Certificates = () => {
-  const [selectedCertificate, setSelectedCertificate] = useState<string | null>(null);
 
   const certificates: Certificate[] = [
     {
@@ -108,7 +106,6 @@ const Certificates = () => {
   const categories = Array.from(new Set(certificates.map(cert => cert.category)));
 
   const handleViewCertificate = (certificate: Certificate) => {
-    setSelectedCertificate(certificate.file);
     // Open paper URL if available, otherwise open PDF
     if (certificate.paperUrl) {
       window.open(certificate.paperUrl, '_blank');
