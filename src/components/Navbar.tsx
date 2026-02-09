@@ -27,15 +27,18 @@ const Navbar = () => {
 
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              {navItems.map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="text-secondary-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors"
-                >
-                  {item}
-                </a>
-              ))}
+              {navItems.map((item) => {
+                const sectionId = item === 'Coding Profiles' ? 'coding-profiles' : item.toLowerCase();
+                return (
+                  <a
+                    key={item}
+                    href={`#${sectionId}`}
+                    className="text-secondary-700 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors"
+                  >
+                    {item}
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -65,16 +68,19 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-secondary-100 shadow-lg purple-border">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navItems.map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-secondary-700 hover:text-primary-600 block px-3 py-2 text-base font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                {item}
-              </a>
-            ))}
+            {navItems.map((item) => {
+              const sectionId = item === 'Coding Profiles' ? 'coding-profiles' : item.toLowerCase();
+              return (
+                <a
+                  key={item}
+                  href={`#${sectionId}`}
+                  className="text-secondary-700 hover:text-primary-600 block px-3 py-2 text-base font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item}
+                </a>
+              );
+            })}
           </div>
         </div>
       )}
