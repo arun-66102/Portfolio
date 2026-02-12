@@ -9,14 +9,19 @@ import Skills from './components/Skills';
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen mesh-bg">
       <Navbar />
       <main>
         <Hero />
+        <div className="section-divider" />
         <Skills />
+        <div className="section-divider" />
         <Projects />
+        <div className="section-divider" />
         <CodingProfiles />
+        <div className="section-divider" />
         <Certificates />
+        <div className="section-divider" />
         <Contact />
       </main>
       <Footer />

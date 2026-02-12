@@ -1,4 +1,5 @@
 import { Calendar, ExternalLink, Github, Tag } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 interface Project {
   id: string;
@@ -13,13 +14,15 @@ interface Project {
 }
 
 const Projects = () => {
+  const { ref, isVisible } = useScrollAnimation(0.05);
+
   const projects: Project[] = [
     {
       id: 'sentiment-analysis',
       title: 'RouteX - PDF Routing System',
       description: 'A system that routes PDF documents to the appropriate department based on content analysis.',
-      image: '/projects/routeX.png', // Add your image here
-      technologies: ['Transformers','LLM','ChromaDB','Tesseract OCR','Semantic search'],
+      image: '/projects/routeX.png',
+      technologies: ['Transformers', 'LLM', 'ChromaDB', 'Tesseract OCR', 'Semantic search'],
       liveUrl: 'https://pdf-router.streamlit.app/',
       githubUrl: 'https://github.com/arun-66102/PDF-Summarizer',
       date: '2026',
@@ -30,7 +33,7 @@ const Projects = () => {
       title: 'Just-Chat - RAG based chatbot',
       description: 'A chatbot that uses Retrieval-Augmented Generation (RAG) to answer questions based on a knowledge base.',
       image: '/projects/just-chat.png',
-      technologies: ['Sentence-transformers','ChromaDB','RAG','Streamlit','Python'],
+      technologies: ['Sentence-transformers', 'ChromaDB', 'RAG', 'Streamlit', 'Python'],
       liveUrl: 'https://justice-chat-bot.streamlit.app/',
       githubUrl: 'https://github.com/arun-66102/Justice-Chat-Bot',
       date: '2024',
@@ -69,107 +72,108 @@ const Projects = () => {
     }
   ];
 
+  const categoryEmojis: Record<string, string> = {
+    'AI Automation': '🤖',
+    'RAG Chatbot': '💬',
+    'Full Stack Development': '🌐',
+    'Machine Learning': '🧠',
+    'Security': '🔒',
+  };
+
   return (
-    <section id="projects" className="py-20 bg-secondary-100/30">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-secondary-900 mb-4">
+    <section id="projects" className="relative py-24 overflow-hidden">
+      {/* Background */}
+      <div className="orb w-[500px] h-[500px] bg-primary-400/8 top-[5%] left-[-10%]" />
+      <div className="orb w-[350px] h-[350px] bg-neon-pink/5 bottom-[10%] right-[-5%]" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
+        {/* Header */}
+        <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
             Featured <span className="gradient-text">Projects</span>
           </h2>
-          <p className="text-xl text-secondary-600 max-w-3xl mx-auto">
+          <p className="text-lg text-secondary-600 max-w-2xl mx-auto">
             A showcase of my Machine Learning, AI and Full Stack projects
           </p>
+          <div className="section-divider mt-8 max-w-sm mx-auto" />
         </div>
 
+        {/* Project Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <div
               key={project.id}
-              className="bg-secondary-200/80 rounded-lg shadow-md overflow-hidden card-hover purple-border"
+              className={`glass-card rounded-2xl overflow-hidden group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                }`}
+              style={{ transitionDelay: `${index * 100}ms` }}
             >
-              {/* Project Image */}
-              <div className="h-48 bg-gradient-to-br from-accent-500 to-primary-600 flex items-center justify-center relative overflow-hidden">
+              {/* Image */}
+              <div className="h-48 bg-gradient-to-br from-primary-100/50 to-accent-50/50 relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#050510]/60 to-transparent z-10" />
                 {project.image && project.image.startsWith('/projects/') ? (
-                  <img 
-                    src={project.image} 
+                  <img
+                    src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement;
                       target.style.display = 'none';
-                      target.parentElement!.innerHTML = `
-                        <div class="text-white text-center p-4">
-                          <div class="text-6xl mb-2">🤖</div>
-                          <p class="text-sm font-medium">Project Preview</p>
-                        </div>
-                      `;
                     }}
                   />
-                ) : (
-                  <div className="text-white text-center p-4">
-                    <div className="text-6xl mb-2">
-                      {project.category === 'AI Automation' ? '🤖' :
-                       project.category === 'RAG Chatbot' ? '💬' :
-                       project.category === 'Full Stack Development' ? '🌐' :
-                       project.category === 'Machine Learning' ? '🧠' :
-                       project.category === 'Security' ? '🔒' : '🚀'}
-                    </div>
-                    <p className="text-sm font-medium">{project.title}</p>
-                  </div>
-                )}
+                ) : null}
+
+                {/* Category badge on image */}
+                <span className="absolute top-3 right-3 z-20 text-xs font-semibold px-3 py-1 rounded-full bg-black/40 backdrop-blur-sm text-white border border-white/10">
+                  {project.category}
+                </span>
+
+                {/* Emoji fallback */}
+                <div className="absolute inset-0 flex items-center justify-center text-6xl z-0">
+                  {categoryEmojis[project.category] || '🚀'}
+                </div>
               </div>
 
-              {/* Project Content */}
+              {/* Content */}
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-lg font-semibold text-secondary-900">
+                  <h4 className="text-lg font-bold text-secondary-900 group-hover:text-white transition-colors">
                     {project.title}
                   </h4>
-                  <div className="flex items-center text-xs text-secondary-500">
+                  <div className="flex items-center text-xs text-secondary-600">
                     <Calendar size={12} className="mr-1" />
                     {project.date}
                   </div>
                 </div>
 
-                <p className="text-secondary-600 text-sm mb-4 line-clamp-3">
+                <p className="text-secondary-600 text-sm mb-4 line-clamp-2 leading-relaxed">
                   {project.description}
                 </p>
 
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.slice(0, 3).map((tech, index) => (
-                    <span
-                      key={index}
-                      className="inline-flex items-center px-2 py-1 bg-primary-200 text-primary-800 text-xs font-medium rounded"
-                    >
-                      <Tag size={10} className="mr-1" />
+                {/* Tech chips */}
+                <div className="flex flex-wrap gap-1.5 mb-5">
+                  {project.technologies.slice(0, 3).map((tech, i) => (
+                    <span key={i} className="tech-chip inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-md">
+                      <Tag size={10} className="mr-1 opacity-60" />
                       {tech}
                     </span>
                   ))}
                   {project.technologies.length > 3 && (
-                    <span className="text-xs text-secondary-500">
-                      +{project.technologies.length - 3} more
+                    <span className="text-xs text-secondary-600 self-center ml-1">
+                      +{project.technologies.length - 3}
                     </span>
                   )}
                 </div>
 
-                {/* Category Badge */}
-                <div className="mb-4">
-                  <span className="inline-flex items-center px-2 py-1 bg-secondary-300 text-secondary-700 text-xs font-medium rounded">
-                    {project.category}
-                  </span>
-                </div>
-
-                {/* Action Buttons */}
-                <div className="flex space-x-2">
+                {/* Buttons */}
+                <div className="flex gap-2">
                   {project.githubUrl && (
                     <a
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center px-3 py-2 bg-accent-200 text-accent-800 text-sm font-medium rounded hover:bg-accent-300 transition-colors"
+                      className="flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-sm font-medium bg-white/5 border border-white/10 text-secondary-800 hover:bg-white/10 hover:text-white hover:border-primary-400/30 transition-all duration-300"
                     >
-                      <Github size={14} className="mr-1" />
+                      <Github size={14} className="mr-1.5" />
                       Code
                     </a>
                   )}
@@ -178,9 +182,9 @@ const Projects = () => {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center px-3 py-2 bg-accent-200 text-accent-800 text-sm font-medium rounded hover:bg-accent-300 transition-colors"
+                      className="flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-sm font-medium btn-gradient text-white"
                     >
-                      <ExternalLink size={14} className="mr-1" />
+                      <ExternalLink size={14} className="mr-1.5" />
                       Live
                     </a>
                   )}
@@ -190,22 +194,25 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-primary-500 to-primary-600 rounded-lg p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4">Interested in My Work?</h3>
-            <p className="text-lg mb-6 opacity-90">
-              Check out my GitHub repository for more projects and contributions
-            </p>
-            <a
-              href="https://github.com/arun-66102"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 bg-white text-primary-600 font-medium rounded-lg hover:bg-secondary-100 transition-colors"
-            >
-              <Github size={20} className="mr-2" />
-              View GitHub Profile
-            </a>
+        {/* CTA */}
+        <div className={`mt-16 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+          <div className="glass-card rounded-2xl p-8 text-center relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-r from-primary-400/5 via-neon-cyan/5 to-neon-pink/5" />
+            <div className="relative">
+              <h3 className="text-2xl font-bold text-secondary-900 mb-3">Interested in My Work?</h3>
+              <p className="text-secondary-600 mb-6 max-w-lg mx-auto">
+                Check out my GitHub for more projects and contributions
+              </p>
+              <a
+                href="https://github.com/arun-66102"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-gradient inline-flex items-center px-6 py-3 text-white font-semibold rounded-xl"
+              >
+                <Github size={18} className="mr-2" />
+                View GitHub Profile
+              </a>
+            </div>
           </div>
         </div>
       </div>
