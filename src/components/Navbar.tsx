@@ -43,10 +43,10 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
-            <a href="https://github.com" className="text-secondary-600 hover:text-primary-600 transition-colors">
+            <a href="https://github.com/arun-66102" className="text-secondary-600 hover:text-primary-600 transition-colors">
               <Github size={20} />
             </a>
-            <a href="https://linkedin.com" className="text-secondary-600 hover:text-primary-600 transition-colors">
+            <a href="https://www.linkedin.com/in/arunkumar-rathinasamy-844085290/" className="text-secondary-600 hover:text-primary-600 transition-colors">
               <Linkedin size={20} />
             </a>
             <a href="mailto:arun8778jul@gmail.com" className="text-secondary-600 hover:text-primary-600 transition-colors">

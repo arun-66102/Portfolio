@@ -11,12 +11,12 @@ const Footer = () => {
     {
       icon: <Github size={20} />,
       label: 'GitHub',
-      href: 'https://github.com'
+      href: 'https://github.com/arun-66102'
     },
     {
       icon: <Linkedin size={20} />,
       label: 'LinkedIn',
-      href: 'https://linkedin.com'
+      href: 'https://www.linkedin.com/in/arunkumar-rathinasamy-844085290/'
     },
     {
       icon: <Mail size={20} />,
@@ -92,7 +92,6 @@ const Footer = () => {
             <h4 className="text-2xl font-bold mb-4 gradient-text">Contact Info</h4>
             <ul className="space-y-2 text-secondary-300">
               <li>Email: arun8778jul@gmail.com</li>
-              <li>Phone: +91 87787 65734</li>
               <li>Location: India</li>
             </ul>
           </div>
