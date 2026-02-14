@@ -45,7 +45,7 @@ const Projects = () => {
       description: 'A full-stack web application that allows users to post and find help requests in their community.',
       image: '/projects/communHub.png',
       technologies: ['React', 'Node.js', 'Express', 'MongoDB', 'Socket.io'],
-      liveUrl: 'https://communhub.netlify.app/',
+      liveUrl: 'https://community-hub-henna.vercel.app/',
       githubUrl: 'https://github.com/arun-66102/Community-Hub',
       date: '2025',
       category: 'Full Stack Development'
