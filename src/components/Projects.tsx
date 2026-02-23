@@ -29,6 +29,27 @@ const Projects = () => {
       category: 'AI Automation'
     },
     {
+      id: 'prism-ai',
+      title: 'Prism AI - Content Generation Suite',
+      description: 'An AI-powered content generation platform that creates SEO-optimized blogs, video scripts, and social media images using Groq LLM and Hugging Face FLUX diffusion models.',
+      image: '/projects/prism-ai.png',
+      technologies: ['FastAPI', 'Groq', 'Hugging Face', 'FLUX.1', 'Python', 'JavaScript'],
+      liveUrl: 'https://prism-ai-boai.onrender.com/',
+      githubUrl: 'https://github.com/Indhu375/Prism-AI',
+      date: '2025',
+      category: 'AI Content Generation'
+    },
+    {
+      id: 'chatbot-ai',
+      title: 'ProManage - Project Management System',
+      description: 'A project management system that allows users to manage their projects and tasks.',
+      image: '/projects/proManage.jpeg',
+      technologies: ['Node.js', 'Express', 'MongoDB'],
+      githubUrl: 'https://github.com/arun-66102/ProManage',
+      date: '2025',
+      category: 'Full Stack Development'
+    },
+    {
       id: 'predictive-analytics',
       title: 'Just-Chat - RAG based chatbot',
       description: 'A chatbot that uses Retrieval-Augmented Generation (RAG) to answer questions based on a knowledge base.',
@@ -59,16 +80,6 @@ const Projects = () => {
       githubUrl: 'https://github.com/arun-66102/Weather-Prediction-ML-model',
       date: '2025',
       category: 'Machine Learning'
-    },
-    {
-      id: 'chatbot-ai',
-      title: 'Encryptor - Java CLI App',
-      description: 'A command-line interface application that encrypts passwords using AES encryption.',
-      image: '/projects/encryptor.jpeg',
-      technologies: ['Java', 'AES', 'CLI'],
-      githubUrl: 'https://github.com/arun-66102/Encrypted-Password-Manager',
-      date: '2024',
-      category: 'Security'
     }
   ];
 
