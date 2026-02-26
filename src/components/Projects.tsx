@@ -45,6 +45,7 @@ const Projects = () => {
       description: 'A project management system that allows users to manage their projects and tasks.',
       image: '/projects/proManage.jpeg',
       technologies: ['Node.js', 'Express', 'MongoDB'],
+      liveUrl: 'https://promanage-production-5fde.up.railway.app/',
       githubUrl: 'https://github.com/arun-66102/ProManage',
       date: '2025',
       category: 'Full Stack Development'
