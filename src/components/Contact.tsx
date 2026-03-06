@@ -23,7 +23,7 @@ const Contact = () => {
           'Accept': 'application/json',
         },
         body: JSON.stringify({
-          access_key: '844ff51b-f86d-4ecd-9afe-43daf90c6914', // TODO: Get your free key from https://web3forms.com/
+          access_key: '844ff51b-f86d-4ecd-9afe-43daf90c6914',
           name: formData.name,
           email: formData.email,
           message: formData.message,
