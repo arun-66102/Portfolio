@@ -11,15 +11,38 @@ const Contact = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
-      const mailtoLink = `mailto:arun8778jul@gmail.com?subject=Contact from Portfolio - ${formData.name}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
-      window.location.href = mailtoLink;
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '844ff51b-f86d-4ecd-9afe-43daf90c6914', // TODO: Get your free key from https://web3forms.com/
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+        }),
+      });
+
+      const result = await response.json();
+      if (result.success) {
+        alert('Message sent successfully!');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        alert('Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error(error);
+      alert('An error occurred. Please try again later.');
+    } finally {
       setIsSubmitting(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 1000);
+    }
   };
 
   const contactInfo = [
