@@ -1,4 +1,4 @@
-import { ArrowUp, Github, Heart, Linkedin, Mail } from 'lucide-react';
+import { ArrowUp, Github, Heart, Linkedin, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -24,17 +24,15 @@ const Footer = () => {
 
   return (
     <footer className="relative border-t border-white/5">
-      {/* Gradient line at top */}
       <div className="section-divider" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid md:grid-cols-3 gap-12">
-          {/* Brand */}
           <div>
             <h3 className="text-2xl font-extrabold gradient-text mb-4">Arunkumar K R</h3>
             <p className="text-secondary-600 text-sm leading-relaxed mb-6">
-              ML Engineer & AI Developer passionate about building intelligent solutions
-              and pushing the boundaries of machine learning and artificial intelligence.
+              ML Engineer and AI Developer passionate about building intelligent systems
+              and practical AI products that solve real problems.
             </p>
             <div className="flex space-x-3">
               {socialLinks.map((social, index) => (
@@ -52,7 +50,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h4 className="text-base font-bold text-secondary-800 mb-5">Quick Links</h4>
             <ul className="space-y-3">
@@ -70,7 +67,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div>
             <h4 className="text-base font-bold text-secondary-800 mb-5">Contact Info</h4>
             <ul className="space-y-3 text-sm text-secondary-600">
@@ -82,18 +78,18 @@ const Footer = () => {
                 <Github size={14} className="text-primary-500" />
                 github.com/arun-66102
               </li>
-              <li>
-                ğŸ“ India
+              <li className="flex items-center gap-2">
+                <MapPin size={14} className="text-primary-500" />
+                India
               </li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom bar */}
         <div className="section-divider mt-12 mb-8" />
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-secondary-700 text-sm flex items-center gap-1">
-            Â© {currentYear} Arunkumar K R Â· Built with
+            © {currentYear} Arunkumar K R · Built with
             <Heart size={14} className="text-red-500 animate-pulse" fill="currentColor" />
           </p>
 

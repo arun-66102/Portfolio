@@ -84,22 +84,21 @@ const Projects = () => {
     }
   ];
 
-  const categoryEmojis: Record<string, string> = {
-    'AI Automation': '🤖',
-    'RAG Chatbot': '💬',
-    'Full Stack Development': '🌐',
-    'Machine Learning': '🧠',
-    'Security': '🔒',
+  const categorySymbols: Record<string, string> = {
+    'AI Automation': 'AI',
+    'AI Content Generation': 'GEN',
+    'RAG Chatbot': 'RAG',
+    'Full Stack Development': 'WEB',
+    'Machine Learning': 'ML',
+    'Security': 'SEC',
   };
 
   return (
     <section id="projects" className="relative py-24 overflow-hidden">
-      {/* Background */}
       <div className="orb w-[500px] h-[500px] bg-primary-400/8 top-[5%] left-[-10%]" />
       <div className="orb w-[350px] h-[350px] bg-neon-pink/5 bottom-[10%] right-[-5%]" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
-        {/* Header */}
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
             Featured <span className="gradient-text">Projects</span>
@@ -110,18 +109,15 @@ const Projects = () => {
           <div className="section-divider mt-8 max-w-sm mx-auto" />
         </div>
 
-        {/* Project Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className={`glass-card rounded-2xl overflow-hidden group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                }`}
+              className={`glass-card rounded-2xl overflow-hidden group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              {/* Image */}
               <div className="h-48 bg-gradient-to-br from-primary-100/50 to-accent-50/50 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#050510]/60 to-transparent z-10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#030303]/70 to-transparent z-10" />
                 {project.image && project.image.startsWith('/projects/') ? (
                   <img
                     src={project.image}
@@ -134,18 +130,15 @@ const Projects = () => {
                   />
                 ) : null}
 
-                {/* Category badge on image */}
                 <span className="absolute top-3 right-3 z-20 text-xs font-semibold px-3 py-1 rounded-full bg-black/40 backdrop-blur-sm text-white border border-white/10">
                   {project.category}
                 </span>
 
-                {/* Emoji fallback */}
-                <div className="absolute inset-0 flex items-center justify-center text-6xl z-0">
-                  {categoryEmojis[project.category] || '🚀'}
+                <div className="absolute inset-0 flex items-center justify-center text-4xl font-black tracking-widest text-white/80 z-0">
+                  {categorySymbols[project.category] || 'DEV'}
                 </div>
               </div>
 
-              {/* Content */}
               <div className="p-6">
                 <div className="flex items-center justify-between mb-3">
                   <h4 className="text-lg font-bold text-secondary-900 group-hover:text-white transition-colors">
@@ -161,7 +154,6 @@ const Projects = () => {
                   {project.description}
                 </p>
 
-                {/* Tech chips */}
                 <div className="flex flex-wrap gap-1.5 mb-5">
                   {project.technologies.slice(0, 3).map((tech, i) => (
                     <span key={i} className="tech-chip inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-md">
@@ -176,7 +168,6 @@ const Projects = () => {
                   )}
                 </div>
 
-                {/* Buttons */}
                 <div className="flex gap-2">
                   {project.githubUrl && (
                     <a
@@ -206,7 +197,6 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* CTA */}
         <div className={`mt-16 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
           <div className="glass-card rounded-2xl p-8 text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-r from-primary-400/5 via-neon-cyan/5 to-neon-pink/5" />

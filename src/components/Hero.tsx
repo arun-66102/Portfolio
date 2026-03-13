@@ -12,7 +12,7 @@ const Hero = () => {
       <div
         className="absolute inset-0 opacity-[0.03]"
         style={{
-          backgroundImage: `linear-gradient(rgba(139,92,246,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,0.3) 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(rgba(0,245,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)`,
           backgroundSize: '50px 50px',
         }}
       />
@@ -70,7 +70,7 @@ const Hero = () => {
             <a
               href="/ARUNKUMAR K R_23CS020.pdf"
               download
-              className="btn-outline inline-flex items-center px-7 py-3.5 text-primary-600 font-semibold rounded-xl"
+              className="btn-outline inline-flex items-center px-7 py-3.5 text-secondary-900 font-semibold rounded-xl"
             >
               <Download className="mr-2" size={18} />
               Resume

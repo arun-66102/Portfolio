@@ -54,8 +54,8 @@ const Navbar = () => {
                   href={`#${item.id}`}
                   className={`relative px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300
                     ${activeSection === item.id
-                      ? 'text-white bg-white/5'
-                      : 'text-secondary-700 hover:text-white hover:bg-white/5'
+                      ? 'text-secondary-900 bg-primary-500/20 border border-primary-500/40 shadow-[0_0_14px_rgba(34,211,238,0.2)]'
+                      : 'text-secondary-700 hover:text-secondary-900 hover:bg-white/5 border border-transparent'
                     }`}
                 >
                   {item.label}
@@ -108,8 +108,8 @@ const Navbar = () => {
               href={`#${item.id}`}
               className={`block px-4 py-3 text-base font-medium rounded-lg transition-all duration-300
                 ${activeSection === item.id
-                  ? 'text-white bg-white/10'
-                  : 'text-secondary-700 hover:text-white hover:bg-white/5'
+                  ? 'text-secondary-900 bg-primary-500/20 border border-primary-500/30'
+                  : 'text-secondary-700 hover:text-secondary-900 hover:bg-white/5 border border-transparent'
                 }`}
               onClick={() => setIsOpen(false)}
             >
