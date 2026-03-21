@@ -88,10 +88,6 @@ const Footer = () => {
 
         <div className="section-divider mt-12 mb-8" />
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-secondary-700 text-sm flex items-center gap-1">
-            © {currentYear} Arunkumar K R · Built with
-            <Heart size={14} className="text-red-500 animate-pulse" fill="currentColor" />
-          </p>
 
           <button
             onClick={scrollToTop}

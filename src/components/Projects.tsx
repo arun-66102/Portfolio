@@ -1,4 +1,4 @@
-import { Calendar, ExternalLink, Github, Tag } from 'lucide-react';
+import { Calendar, ExternalLink, Github } from 'lucide-react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 interface Project {
@@ -26,7 +26,7 @@ const Projects = () => {
       liveUrl: 'https://pdf-router.streamlit.app/',
       githubUrl: 'https://github.com/arun-66102/PDF-Summarizer',
       date: '2026',
-      category: 'AI Automation'
+      category: 'AI Automation',
     },
     {
       id: 'prism-ai',
@@ -37,7 +37,7 @@ const Projects = () => {
       liveUrl: 'https://prism-ai-boai.onrender.com/',
       githubUrl: 'https://github.com/Indhu375/Prism-AI',
       date: '2025',
-      category: 'AI Content Generation'
+      category: 'AI Content Generation',
     },
     {
       id: 'chatbot-ai',
@@ -48,7 +48,7 @@ const Projects = () => {
       liveUrl: 'https://promanage-production-5fde.up.railway.app/',
       githubUrl: 'https://github.com/arun-66102/ProManage',
       date: '2025',
-      category: 'Full Stack Development'
+      category: 'Full Stack Development',
     },
     {
       id: 'predictive-analytics',
@@ -59,7 +59,7 @@ const Projects = () => {
       liveUrl: 'https://justice-chat-bot.streamlit.app/',
       githubUrl: 'https://github.com/arun-66102/Justice-Chat-Bot',
       date: '2024',
-      category: 'RAG Chatbot'
+      category: 'RAG Chatbot',
     },
     {
       id: 'computer-vision',
@@ -70,7 +70,7 @@ const Projects = () => {
       liveUrl: 'https://community-hub-henna.vercel.app/',
       githubUrl: 'https://github.com/arun-66102/Community-Hub',
       date: '2025',
-      category: 'Full Stack Development'
+      category: 'Full Stack Development',
     },
     {
       id: 'ml-classifier',
@@ -80,8 +80,8 @@ const Projects = () => {
       technologies: ['Python', 'TensorFlow', 'Pandas', 'Scikit-learn', 'NumPy'],
       githubUrl: 'https://github.com/arun-66102/Weather-Prediction-ML-model',
       date: '2025',
-      category: 'Machine Learning'
-    }
+      category: 'Machine Learning',
+    },
   ];
 
   const categorySymbols: Record<string, string> = {
@@ -94,129 +94,98 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="relative py-24 overflow-hidden">
-      <div className="orb w-[500px] h-[500px] bg-primary-400/8 top-[5%] left-[-10%]" />
-      <div className="orb w-[350px] h-[350px] bg-neon-pink/5 bottom-[10%] right-[-5%]" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
-        <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
-            Featured <span className="gradient-text">Projects</span>
-          </h2>
-          <p className="text-lg text-secondary-600 max-w-2xl mx-auto">
-            A showcase of my Machine Learning, AI and Full Stack projects
-          </p>
-          <div className="section-divider mt-8 max-w-sm mx-auto" />
+    <section id="projects" style={{ padding: '100px 60px' }} ref={ref}>
+      {/* Section Header */}
+      <div className="cyber-header">
+        <div className="ch-num">02</div>
+        <div className="ch-title">
+          <span className="col-b">FEATURED</span>_<span className="col-a">PROJECTS</span>
         </div>
+      </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
-            <div
-              key={project.id}
-              className={`glass-card rounded-2xl overflow-hidden group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <div className="h-48 bg-gradient-to-br from-primary-100/50 to-accent-50/50 relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-t from-[#030303]/70 to-transparent z-10" />
-                {project.image && project.image.startsWith('/projects/') ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                    }}
-                  />
-                ) : null}
+      {/* Projects Grid */}
+      <div className="cert-cyber-grid-3">
+        {projects.map((project, index) => (
+          <div
+            key={project.id}
+            className="cert-cyber"
+            style={{
+              opacity: isVisible ? 1 : 0,
+              transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
+              transition: `opacity 0.6s ease ${index * 80}ms, transform 0.6s ease ${index * 80}ms`,
+            }}
+          >
+            <div className="cert-corner" />
 
-                <span className="absolute top-3 right-3 z-20 text-xs font-semibold px-3 py-1 rounded-full bg-black/40 backdrop-blur-sm text-white border border-white/10">
-                  {project.category}
-                </span>
+            {/* Image */}
+            <div className="project-img-wrap">
+              {project.image && project.image.startsWith('/projects/') && (
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
+                />
+              )}
+              <div className="project-img-overlay" />
+              <div className="project-cat-symbol">{categorySymbols[project.category] || 'DEV'}</div>
+              <div className="cyber-category-badge">{project.category}</div>
+            </div>
 
-                <div className="absolute inset-0 flex items-center justify-center text-4xl font-black tracking-widest text-white/80 z-0">
-                  {categorySymbols[project.category] || 'DEV'}
-                </div>
-              </div>
-
-              <div className="p-6">
-                <div className="flex items-center justify-between mb-3">
-                  <h4 className="text-lg font-bold text-secondary-900 group-hover:text-white transition-colors">
-                    {project.title}
-                  </h4>
-                  <div className="flex items-center text-xs text-secondary-600">
-                    <Calendar size={12} className="mr-1" />
-                    {project.date}
-                  </div>
-                </div>
-
-                <p className="text-secondary-600 text-sm mb-4 line-clamp-2 leading-relaxed">
-                  {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-1.5 mb-5">
-                  {project.technologies.slice(0, 3).map((tech, i) => (
-                    <span key={i} className="tech-chip inline-flex items-center px-2.5 py-1 text-xs font-medium rounded-md">
-                      <Tag size={10} className="mr-1 opacity-60" />
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 3 && (
-                    <span className="text-xs text-secondary-600 self-center ml-1">
-                      +{project.technologies.length - 3}
-                    </span>
-                  )}
-                </div>
-
-                <div className="flex gap-2">
-                  {project.githubUrl && (
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-sm font-medium bg-white/5 border border-white/10 text-secondary-800 hover:bg-white/10 hover:text-white hover:border-primary-400/30 transition-all duration-300"
-                    >
-                      <Github size={14} className="mr-1.5" />
-                      Code
-                    </a>
-                  )}
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-sm font-medium btn-gradient text-white"
-                    >
-                      <ExternalLink size={14} className="mr-1.5" />
-                      Live
-                    </a>
-                  )}
+            {/* Content */}
+            <div className="cert-cyber-top" style={{ flexDirection: 'column', gap: 4 }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%' }}>
+                <div className="cert-cyber-name" style={{ fontSize: 15 }}>{project.title}</div>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                  <Calendar size={11} style={{ color: 'rgba(242,232,255,0.3)' }} />
+                  <span className="cert-cyber-year">{project.date}</span>
                 </div>
               </div>
             </div>
-          ))}
-        </div>
 
-        <div className={`mt-16 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="glass-card rounded-2xl p-8 text-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary-400/5 via-neon-cyan/5 to-neon-pink/5" />
-            <div className="relative">
-              <h3 className="text-2xl font-bold text-secondary-900 mb-3">Interested in My Work?</h3>
-              <p className="text-secondary-600 mb-6 max-w-lg mx-auto">
-                Check out my GitHub for more projects and contributions
-              </p>
-              <a
-                href="https://github.com/arun-66102"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-gradient inline-flex items-center px-6 py-3 text-white font-semibold rounded-xl"
-              >
-                <Github size={18} className="mr-2" />
-                View GitHub Profile
-              </a>
+            <div className="cert-cyber-body">
+              <p className="cert-cyber-desc">{project.description}</p>
+              {/* Tech tags */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: 12 }}>
+                {project.technologies.slice(0, 3).map((tech, i) => (
+                  <span key={i} className={`cyber-tag ${i % 2 === 0 ? '' : 'teal'}`}>{tech}</span>
+                ))}
+                {project.technologies.length > 3 && (
+                  <span style={{ fontFamily: "'Fira Code',monospace", fontSize: 10, color: 'rgba(242,232,255,0.3)', alignSelf: 'center' }}>
+                    +{project.technologies.length - 3}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Action buttons */}
+            <div className="cert-cyber-footer">
+              {project.githubUrl && (
+                <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="cyber-card-btn">
+                  <Github size={13} /> CODE
+                </a>
+              )}
+              {project.liveUrl && (
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="cyber-card-btn btn-live">
+                  <ExternalLink size={13} /> LIVE
+                </a>
+              )}
             </div>
           </div>
-        </div>
+        ))}
+      </div>
+
+      {/* CTA */}
+      <div style={{ marginTop: 48, textAlign: 'center' }}>
+        <a
+          href="https://github.com/arun-66102"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="cyber-btn cyber-btn-sec"
+          style={{ display: 'inline-flex' }}
+        >
+          <Github size={16} />
+          VIEW GITHUB PROFILE
+        </a>
       </div>
     </section>
   );

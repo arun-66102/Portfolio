@@ -1,125 +1,93 @@
-import { ArrowRight, Download, Sparkles } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* ── Animated Background Orbs ── */}
-      <div className="orb w-[500px] h-[500px] bg-primary-400/20 top-[-10%] left-[-10%] animate-float" />
-      <div className="orb w-[400px] h-[400px] bg-neon-cyan/10 bottom-[-5%] right-[-5%] animate-float-slow" />
-      <div className="orb w-[300px] h-[300px] bg-neon-pink/10 top-[40%] right-[20%] animate-float-delay" />
-
-      {/* ── Grid Pattern Overlay ── */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0,245,255,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.2) 1px, transparent 1px)`,
-          backgroundSize: '50px 50px',
-        }}
-      />
-
-      {/* ── Content ── */}
-      <div className="relative max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center px-4 sm:px-6 lg:px-8 py-20">
-
-        {/* Left: Text Content */}
-        <div className="space-y-8">
-          {/* Tag */}
-          <div className="animate-fade-in-up">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-sm font-medium bg-primary-400/10 border border-primary-400/20 text-primary-600">
-              <Sparkles size={14} className="text-neon-cyan" />
-              Available for Opportunities
-            </span>
+    <section id="home">
+      <div className="hero-grid">
+        {/* ── Left: Text Content ── */}
+        <div>
+          {/* Glitch Name */}
+          <div className="glitch-name-wrap">
+            <div className="glitch-name">
+              ARUN<br />
+              <span className="name-highlight">KUMAR</span><br />
+              KR
+            </div>
+            <div className="glitch-name-copy" aria-hidden="true">
+              ARUN<br />
+              <span className="name-highlight">KUMAR</span><br />
+              KR
+            </div>
           </div>
 
-          {/* Heading */}
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.15s' }}>
-            <h2 className="text-5xl md:text-7xl font-extrabold leading-tight tracking-tight">
-              <span className="text-secondary-900">I'm </span>
-              <span className="gradient-text">Arunkumar</span>
-              <br />
-              <span className="gradient-text">K R</span>
-            </h2>
-          </div>
+          {/* Role line */}
+          <div className="hero-role">ML_ENGINEER &amp; AI_DEVELOPER</div>
 
-          {/* Subtitle */}
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            <h3 className="text-xl md:text-2xl font-medium text-secondary-700 flex items-center gap-3">
-              <span className="w-8 h-[2px] bg-gradient-to-r from-neon-cyan to-transparent" />
-              ML Engineer & AI Developer
-            </h3>
-          </div>
-
-          {/* Description */}
-          <div className="animate-fade-in-up" style={{ animationDelay: '0.45s' }}>
-            <p className="text-lg text-secondary-600 leading-relaxed max-w-lg">
-              Passionate ML Engineer and AI Developer with expertise in machine learning,
-              artificial intelligence, and data science. Building comprehensive
-              AI-powered applications with modern full-stack technologies.
-            </p>
-          </div>
+          {/* Bio */}
+          <p className="hero-bio">
+            Passionate ML Engineer and AI Developer with expertise in machine learning,
+            artificial intelligence, and data science. Building comprehensive
+            AI-powered applications with modern full-stack technologies.
+          </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-            <a
-              href="#contact"
-              className="btn-gradient inline-flex items-center px-7 py-3.5 text-white font-semibold rounded-xl"
-            >
+          <div className="hero-btns">
+            <a href="#contact" className="cyber-btn cyber-btn-primary">
               Get In Touch
-              <ArrowRight className="ml-2" size={18} />
+              <ArrowRight size={16} />
             </a>
-
             <a
               href="/ARUNKUMAR K R_23CS020.pdf"
               download
-              className="btn-outline inline-flex items-center px-7 py-3.5 text-secondary-900 font-semibold rounded-xl"
+              className="cyber-btn cyber-btn-sec"
             >
-              <Download className="mr-2" size={18} />
+              <Download size={16} />
               Resume
             </a>
           </div>
 
-          {/* Mini Stats */}
-          <div className="flex items-center gap-8 pt-4 animate-fade-in-up" style={{ animationDelay: '0.75s' }}>
-            {[
-              { value: '445+', label: 'Problems' },
-              { value: '19+', label: 'Projects' },
-              { value: '10+', label: 'Certs' },
-            ].map((stat, i) => (
-              <div key={i} className="text-center">
-                <div className="text-2xl font-bold gradient-text">{stat.value}</div>
-                <div className="text-xs text-secondary-600 mt-1">{stat.label}</div>
-              </div>
-            ))}
+          {/* Stats Bar */}
+          <div className="stats-cyber">
+            <div className="sc-item">
+              <span className="sc-num">445+</span>
+              <span className="sc-label">PROBLEMS</span>
+            </div>
+            <div className="sc-item">
+              <span className="sc-num">19+</span>
+              <span className="sc-label">PROJECTS</span>
+            </div>
+            <div className="sc-item">
+              <span className="sc-num">10+</span>
+              <span className="sc-label">CERTS</span>
+            </div>
           </div>
         </div>
 
-        {/* Right: Profile Image */}
-        <div className="flex justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-          <div className="relative">
-            {/* Outer glow ring */}
-            <div className="absolute inset-[-20px] bg-gradient-to-br from-primary-400/30 via-neon-cyan/10 to-neon-pink/20 rounded-full blur-3xl animate-glow-pulse" />
-
-            {/* Decorative rotating ring */}
-            <div className="absolute inset-[-15px] rounded-full border border-dashed border-primary-400/20 animate-spin-slow" />
-
-            {/* Image */}
-            <img
-              src="/ARUNKUMAR K R_23CS020.jpg"
-              alt="Arunkumar K R"
-              className="relative w-80 h-80 md:w-[22rem] md:h-[22rem] rounded-full object-cover object-top border-2 border-primary-400/30 shadow-2xl purple-glow z-10"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjQwMCIgdmlld0JveD0iMCAwIDQwMCA0MDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iNDAwIiBmaWxsPSIjRjFGNUY5Ii8+CjxjaXJjbGUgY3g9IjIwMCIgY3k9IjE1MCIgcj0iNjAiIGZpbGw9IiM5Q0EzQUYiLz4KPHBhdGggZD0iTTIwMCAyNDBDMjQwIDI0MCAyODAgMjgwIDI4MCAzMjBIMTIwQzEyMCAyODAgMTYwIDI0MCAyMDAgMjQwWiIgZmlsbD0iIzlDQTNBRiIvPgo8L3N2Zz4K';
-              }}
-            />
+        {/* ── Right: Terminal Card ── */}
+        <div className="hero-terminal">
+          <div className="terminal-titlebar">
+            <div className="t-btn r" />
+            <div className="t-btn y" />
+            <div className="t-btn g" />
+            <div className="t-title">ARUNKUMAR@PORTFOLIO:~</div>
           </div>
-        </div>
-      </div>
-
-      {/* ── Scroll indicator ── */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-pulse-soft">
-        <span className="text-xs text-secondary-600 tracking-widest uppercase">Scroll</span>
-        <div className="w-5 h-8 rounded-full border-2 border-secondary-600/30 flex justify-center pt-1.5">
-          <div className="w-1 h-2 bg-primary-500 rounded-full animate-float" />
+          <div className="terminal-body">
+            <div className="tl"><span className="tp">▶</span><span className="tc">node</span><span className="tw"> index.js</span></div>
+            <div className="tl"><span className="tg">✓</span><span className="tw"> Server running on :3000</span></div>
+            <div className="tl" style={{ height: 20 }} />
+            <div className="tl"><span className="tp">▶</span><span className="tc">whoami</span></div>
+            <div className="tl"><span className="ty">Arunkumar KR</span></div>
+            <div className="tl"><span className="td">ML Engineer &amp; AI Developer, Chennai</span></div>
+            <div className="tl" style={{ height: 20 }} />
+            <div className="tl"><span className="tp">▶</span><span className="tc">cat</span><span className="tw"> skills.json</span></div>
+            <div className="tl"><span className="td">{'{'}</span></div>
+            <div className="tl"><span className="td">&nbsp;&nbsp;</span><span className="ty">"python"</span><span className="td">:</span><span className="tg">"95%"</span><span className="td">,</span></div>
+            <div className="tl"><span className="td">&nbsp;&nbsp;</span><span className="ty">"machine_learning"</span><span className="td">:</span><span className="tg">"90%"</span><span className="td">,</span></div>
+            <div className="tl"><span className="td">&nbsp;&nbsp;</span><span className="ty">"deep_learning"</span><span className="td">:</span><span className="tg">"85%"</span></div>
+            <div className="tl"><span className="td">{'}'}</span></div>
+            <div className="tl" style={{ height: 20 }} />
+            <div className="tl"><span className="tp">▶</span><span className="cursor-blink">█</span></div>
+          </div>
         </div>
       </div>
     </section>

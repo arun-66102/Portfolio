@@ -50,96 +50,89 @@ const Certificates = () => {
   let cardIndex = 0;
 
   return (
-    <section id="certificates" className="relative py-24 overflow-hidden">
-      <div className="orb w-[400px] h-[400px] bg-primary-400/8 top-[15%] left-[-8%]" />
-      <div className="orb w-[350px] h-[350px] bg-neon-cyan/5 bottom-[10%] right-[-8%]" />
-
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
-        {/* Header */}
-        <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
-            Professional <span className="gradient-text">Certificates</span>
-          </h2>
-          <p className="text-lg text-secondary-600 max-w-2xl mx-auto">
-            A collection of my professional certifications and achievements
-          </p>
-          <div className="section-divider mt-8 max-w-sm mx-auto" />
+    <section id="certificates" style={{ padding: '100px 60px' }} ref={ref}>
+      {/* Section Header */}
+      <div className="cyber-header">
+        <div className="ch-num">04</div>
+        <div className="ch-title">
+          <span className="col-b">PROFESSIONAL</span>_<span className="col-a">CERTS</span>
         </div>
+      </div>
 
-        {/* Categories */}
-        <div className="space-y-14">
-          {categories.map((category) => (
-            <div key={category} className="space-y-6">
-              <h3 className={`text-xl font-bold text-secondary-800 flex items-center gap-3 transition-all duration-700 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-                }`}>
-                <Award className="text-neon-cyan" size={24} />
-                {category}
-              </h3>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-                {certificates
-                  .filter(cert => cert.category === category)
-                  .map((certificate) => {
-                    const currentIndex = cardIndex++;
-                    return (
-                      <div
-                        key={certificate.id + certificate.date}
-                        className={`glass-card rounded-2xl p-6 group transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-                          }`}
-                        style={{ transitionDelay: `${currentIndex * 80}ms` }}
-                      >
-                        <div className="flex items-start justify-between mb-4">
-                          <div className="flex-1 pr-3">
-                            <h4 className="text-base font-bold text-secondary-900 mb-1.5 group-hover:text-white transition-colors leading-tight">
-                              {certificate.name}
-                            </h4>
-                            <p className="text-secondary-600 text-sm">{certificate.issuer}</p>
-                            <p className="text-secondary-700 text-xs mt-1 font-medium">{certificate.date}</p>
-                          </div>
-                          <div className="p-2.5 rounded-xl bg-primary-400/10 text-primary-500 group-hover:text-neon-cyan transition-colors">
-                            <Award size={20} />
-                          </div>
-                        </div>
-
-                        <div className="flex gap-2 mt-5">
-                          <button
-                            onClick={() => handleViewCertificate(certificate)}
-                            className="flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-sm font-medium bg-white/5 border border-white/10 text-secondary-800 hover:bg-white/10 hover:text-neon-cyan hover:border-primary-400/30 transition-all duration-300"
-                          >
-                            <Eye size={14} className="mr-1.5" />
-                            View
-                          </button>
-                          <button
-                            onClick={() => handleDownloadCertificate(certificate.file, `${certificate.name.replace(/\s+/g, '_')}.pdf`)}
-                            className="flex-1 inline-flex items-center justify-center px-4 py-2.5 rounded-lg text-sm font-medium bg-white/5 border border-white/10 text-secondary-800 hover:bg-white/10 hover:text-white hover:border-primary-400/30 transition-all duration-300"
-                          >
-                            <Download size={14} className="mr-1.5" />
-                            Download
-                          </button>
-                        </div>
-                      </div>
-                    );
-                  })}
-              </div>
+      {/* Categories */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: 48 }}>
+        {categories.map((category) => (
+          <div key={category}>
+            {/* Category label */}
+            <div className="skills-category-label" style={{ marginBottom: 20 }}>
+              <Award size={14} style={{ color: '#00ffc8' }} />
+              {category.toUpperCase()}
             </div>
-          ))}
-        </div>
 
-        {/* Bottom CTA */}
-        <div className={`mt-16 transition-all duration-700 delay-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-          <div className="glass-card rounded-2xl p-8 text-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-r from-primary-400/5 via-neon-cyan/5 to-neon-pink/5" />
-            <div className="relative">
-              <h3 className="text-2xl font-bold text-secondary-900 mb-3">Professional Achievements</h3>
-              <p className="text-secondary-600 mb-2 max-w-lg mx-auto">
-                All certificates are verified and available for download. Click on any certificate to view or download it.
-              </p>
-              <p className="text-sm text-secondary-700">
-                For verification or references, please contact me directly.
-              </p>
+            {/* Cards grid */}
+            <div className="cert-cyber-grid-3">
+              {certificates
+                .filter(cert => cert.category === category)
+                .map((certificate) => {
+                  const currentIndex = cardIndex++;
+                  const isPrimary = currentIndex % 2 === 0;
+                  return (
+                    <div
+                      key={certificate.id + certificate.date}
+                      className={`cert-cyber ${isPrimary ? 'primary' : ''}`}
+                      style={{
+                        opacity: isVisible ? 1 : 0,
+                        transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
+                        transition: `opacity 0.6s ease ${currentIndex * 60}ms, transform 0.6s ease ${currentIndex * 60}ms`,
+                      }}
+                    >
+                      <div className={`cert-corner ${isPrimary ? 'primary-corner' : ''}`} />
+
+                      <div className="cert-cyber-top">
+                        <div className="cert-cyber-issuer">{certificate.issuer}</div>
+                        <div className="cert-cyber-year">{certificate.date}</div>
+                      </div>
+
+                      <div className="cert-cyber-body">
+                        <div className="cert-cyber-name">{certificate.name}</div>
+                      </div>
+
+                      <div className="cert-cyber-footer">
+                        <button
+                          className="cyber-card-btn"
+                          onClick={() => handleViewCertificate(certificate)}
+                        >
+                          <Eye size={13} /> VIEW
+                        </button>
+                        <button
+                          className="cyber-card-btn"
+                          onClick={() => handleDownloadCertificate(certificate.file, `${certificate.name.replace(/\s+/g, '_')}.pdf`)}
+                        >
+                          <Download size={13} /> DOWNLOAD
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
             </div>
           </div>
+        ))}
+      </div>
+
+      {/* CTA */}
+      <div style={{
+        marginTop: 60,
+        border: '1px solid rgba(155,0,255,0.2)',
+        padding: '32px 40px',
+        textAlign: 'center',
+        background: 'rgba(155,0,255,0.02)',
+      }}>
+        <div style={{ fontFamily: "'Exo 2',sans-serif", fontSize: 20, fontWeight: 700, color: '#f2e8ff', marginBottom: 12 }}>
+          Professional Achievements
         </div>
+        <p style={{ fontFamily: 'inherit', fontWeight: 300, color: 'rgba(242,232,255,0.5)', fontSize: 14, lineHeight: 1.8 }}>
+          All certificates are verified and available for download. For verification or references, please contact me directly.
+        </p>
       </div>
     </section>
   );
