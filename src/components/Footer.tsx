@@ -1,11 +1,10 @@
-import { ArrowUp, Github, Heart, Linkedin, Mail, MapPin } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Mail, MapPin } from 'lucide-react';
 
 const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const currentYear = new Date().getFullYear();
 
   const socialLinks = [
     { icon: <Github size={18} />, label: 'GitHub', href: 'https://github.com/arun-66102' },
