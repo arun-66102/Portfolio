@@ -41,66 +41,63 @@ const Contact = () => {
   };
 
   const contactInfo = [
-    { icon: <Mail size={18} />, label: 'EMAIL', value: 'arun8778jul@gmail.com', href: 'mailto:arun8778jul@gmail.com' },
-    { icon: <Phone size={18} />, label: 'PHONE', value: '+91 87787 65734', href: 'tel:+918778765734' },
-    { icon: <MapPin size={18} />, label: 'LOCATION', value: 'India', href: '#' },
+    { icon: <Mail size={16} />,    label: 'Email',    value: 'arun8778jul@gmail.com', href: 'mailto:arun8778jul@gmail.com' },
+    { icon: <Phone size={16} />,   label: 'Phone',    value: '+91 87787 65734',       href: 'tel:+918778765734' },
+    { icon: <MapPin size={16} />,  label: 'Location', value: 'Erode, India',         href: '#' },
   ];
 
   const socialLinks = [
-    { icon: <Github size={18} />, label: 'GitHub', href: 'https://github.com/arun-66102' },
-    { icon: <Linkedin size={18} />, label: 'LinkedIn', href: 'https://www.linkedin.com/in/arunkumar-rathinasamy-844085290/' },
-    { icon: <MessageCircle size={18} />, label: 'WhatsApp', href: 'https://wa.me/918778765734' },
+    { icon: <Github size={18} />,       label: 'GitHub',   href: 'https://github.com/arun-66102' },
+    { icon: <Linkedin size={18} />,     label: 'LinkedIn', href: 'https://www.linkedin.com/in/arunkumar-rathinasamy-844085290/' },
+    { icon: <MessageCircle size={18} />,label: 'WhatsApp', href: 'https://wa.me/918778765734' },
   ];
 
   return (
-    <section id="contact" ref={ref}>
-      {/* Section Header */}
-      <div className="cyber-header">
-        <div className="ch-num">05</div>
-        <div className="ch-title">
-          <span className="col-a">GET</span>_<span className="col-b">IN_TOUCH</span>
-        </div>
-      </div>
+    <section id="contact" ref={ref} className="noir-contact">
+      <div className="noir-section-label">Let's Collaborate</div>
+      <h2 className="noir-section-title">
+        Get In<br />
+        <em>Touch</em>
+      </h2>
 
-      {/* Two-column layout */}
-      <div className="contact-cyber" style={{ opacity: isVisible ? 1 : 0, transition: 'opacity 0.7s ease' }}>
-        {/* Left — contact info */}
+      <div
+        className="noir-contact-layout"
+        style={{
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(1.5rem)',
+          transition: 'opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1)',
+        }}
+      >
+        {/* Left — Info */}
         <div>
-          <div className="contact-big">
-            <span className="col-a">LET'S</span><br />
-            <span className="col-b">CONNECT</span>
-          </div>
-
-          <p className="contact-sub">
-            I'm always interested in hearing about new opportunities in Machine Learning, AI,
-            and Data Science. Also open to collaborations on AI-powered web applications
-            and innovative ML projects.
+          <h3 className="noir-contact-info-title">
+            Open to opportunities in AI and Backend roles
+          </h3>
+          <p className="noir-contact-sub">
+            Always interested in hearing about new challenges and collaborations
+            on AI-powered applications and innovative ML projects.
           </p>
 
-          {/* Contact links */}
-          <div className="contact-links-cyber">
+          <div className="noir-contact-links">
             {contactInfo.map((info, index) => (
-              <a key={index} href={info.href} className="cc-link">
-                <span className="cc-link-icon">{info.icon}</span>
+              <a key={index} href={info.href} className="noir-contact-link">
+                <span className="noir-contact-link-icon">{info.icon}</span>
                 <div>
-                  <div style={{ fontFamily: "'Fira Code',monospace", fontSize: 9, letterSpacing: 2, color: 'rgba(242,232,255,0.25)', textTransform: 'uppercase', marginBottom: 2 }}>
-                    {info.label}
-                  </div>
-                  <div style={{ fontSize: 13, color: 'rgba(242,232,255,0.7)' }}>{info.value}</div>
+                  <div className="noir-contact-link-label">{info.label}</div>
+                  <div className="noir-contact-link-value">{info.value}</div>
                 </div>
               </a>
             ))}
           </div>
 
-          {/* Social icons */}
-          <div className="contact-social-row">
+          <div className="noir-social-row">
             {socialLinks.map((social, index) => (
               <a
                 key={index}
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="contact-social-btn"
+                className="noir-social-btn"
                 aria-label={social.label}
               >
                 {social.icon}
@@ -109,64 +106,66 @@ const Contact = () => {
           </div>
         </div>
 
-        {/* Right — form */}
-        <div className="contact-form-wrap">
-          <div style={{ fontFamily: "'Exo 2',sans-serif", fontSize: 18, fontWeight: 700, color: '#f2e8ff', marginBottom: 28, letterSpacing: 1 }}>
-            SEND_A_MESSAGE
-          </div>
-
+        {/* Right — Form */}
+        <div>
           <form onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="name" className="form-label">Your Name</label>
+              <label htmlFor="contact-name" className="noir-form-label">Your Name</label>
               <input
                 type="text"
-                id="name"
+                id="contact-name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="cyber-input"
+                className="noir-input"
                 placeholder="John Doe"
               />
             </div>
             <div>
-              <label htmlFor="email" className="form-label">Email Address</label>
+              <label htmlFor="contact-email" className="noir-form-label">Email Address</label>
               <input
                 type="email"
-                id="email"
+                id="contact-email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="cyber-input"
+                className="noir-input"
                 placeholder="john@example.com"
               />
             </div>
             <div>
-              <label htmlFor="message" className="form-label">Message</label>
+              <label htmlFor="contact-message" className="noir-form-label">Message</label>
               <textarea
-                id="message"
+                id="contact-message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 required
-                className="cyber-input"
-                placeholder="Your message here..."
+                className="noir-input"
+                placeholder="Tell me about your project..."
               />
             </div>
             <button
               type="submit"
+              id="contact-submit-btn"
               disabled={isSubmitting}
-              className="cyber-send"
+              className="noir-submit-btn"
             >
               {isSubmitting ? (
                 <>
-                  <div style={{ width: 16, height: 16, border: '2px solid rgba(0,0,0,0.3)', borderTop: '2px solid #000', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
-                  SENDING...
+                  <div style={{
+                    width: 16, height: 16,
+                    border: '2px solid rgba(0,0,0,0.2)',
+                    borderTop: '2px solid #000',
+                    animation: 'spin 1s linear infinite',
+                  }} />
+                  Sending...
                 </>
               ) : (
                 <>
-                  SEND MESSAGE
+                  Send Message
                   <Send size={16} />
                 </>
               )}

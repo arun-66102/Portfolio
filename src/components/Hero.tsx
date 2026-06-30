@@ -1,94 +1,63 @@
-import { ArrowRight, Download } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 const Hero = () => {
+  const ref = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', '30% start'],
+  });
+
+  // Background scales OUT (zooms in = immersive depth)
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1.0, 1.27]);
+
+  // Heading scales DOWN (recedes into screen)
+  const headingScale = useTransform(scrollYProgress, [0, 1], [1.0, 0.89]);
+
+  // Side label fades out
+  const labelOpacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
   return (
-    <section id="home">
-      <div className="hero-grid">
-        {/* ── Left: Text Content ── */}
-        <div>
-          {/* Glitch Name */}
-          <div className="glitch-name-wrap">
-            <div className="glitch-name">
-              ARUN<br />
-              <span className="name-highlight">KUMAR</span><br />
-              KR
-            </div>
-            <div className="glitch-name-copy" aria-hidden="true">
-              ARUN<br />
-              <span className="name-highlight">KUMAR</span><br />
-              KR
-            </div>
-          </div>
+    <section id="home" ref={ref} className="noir-hero">
+      {/* ── Layer 1: Background ── */}
+      <motion.div
+        className="noir-hero-bg"
+        style={{ scale: bgScale }}
+      />
 
-          {/* Role line */}
-          <div className="hero-role">ML_ENGINEER &amp; AI_DEVELOPER</div>
+      {/* ── Layer 2: Heading (recedes on scroll) ── */}
+      <motion.div
+        className="noir-hero-heading-wrap"
+        style={{ scale: headingScale }}
+      >
+        <h1 className="noir-hero-heading">
+          Arun<br />
+          <em>kumar</em><br />
+          KR
+        </h1>
 
-          {/* Bio */}
-          <p className="hero-bio">
-            Passionate ML Engineer and AI Developer with expertise in machine learning,
-            artificial intelligence, and data science. Building comprehensive
-            AI-powered applications with modern full-stack technologies.
-          </p>
+        {/* ── Layer 3: Side Label (fades on scroll) ── */}
+        <motion.div
+          className="noir-hero-side-label"
+          style={{ opacity: labelOpacity }}
+          aria-hidden="true"
+        >
+          ML Engineer &amp; AI Developer
+        </motion.div>
+      </motion.div>
 
-          {/* CTA Buttons */}
-          <div className="hero-btns">
-            <a href="#contact" className="cyber-btn cyber-btn-primary">
-              Get In Touch
-              <ArrowRight size={16} />
-            </a>
-            <a
-              href="/ARUNKUMAR K R_23CS020.pdf"
-              download
-              className="cyber-btn cyber-btn-sec"
-            >
-              <Download size={16} />
-              Resume
-            </a>
-          </div>
-
-          {/* Stats Bar */}
-          <div className="stats-cyber">
-            <div className="sc-item">
-              <span className="sc-num">445+</span>
-              <span className="sc-label">PROBLEMS</span>
-            </div>
-            <div className="sc-item">
-              <span className="sc-num">19+</span>
-              <span className="sc-label">PROJECTS</span>
-            </div>
-            <div className="sc-item">
-              <span className="sc-num">10+</span>
-              <span className="sc-label">CERTS</span>
-            </div>
-          </div>
-        </div>
-
-        {/* ── Right: Terminal Card ── */}
-        <div className="hero-terminal">
-          <div className="terminal-titlebar">
-            <div className="t-btn r" />
-            <div className="t-btn y" />
-            <div className="t-btn g" />
-            <div className="t-title">ARUNKUMAR@PORTFOLIO:~</div>
-          </div>
-          <div className="terminal-body">
-            <div className="tl"><span className="tp">▶</span><span className="tc">node</span><span className="tw"> index.js</span></div>
-            <div className="tl"><span className="tg">✓</span><span className="tw"> Server running on :3000</span></div>
-            <div className="tl" style={{ height: 20 }} />
-            <div className="tl"><span className="tp">▶</span><span className="tc">whoami</span></div>
-            <div className="tl"><span className="ty">Arunkumar KR</span></div>
-            <div className="tl"><span className="td">ML Engineer &amp; AI Developer, Chennai</span></div>
-            <div className="tl" style={{ height: 20 }} />
-            <div className="tl"><span className="tp">▶</span><span className="tc">cat</span><span className="tw"> skills.json</span></div>
-            <div className="tl"><span className="td">{'{'}</span></div>
-            <div className="tl"><span className="td">&nbsp;&nbsp;</span><span className="ty">"python"</span><span className="td">:</span><span className="tg">"95%"</span><span className="td">,</span></div>
-            <div className="tl"><span className="td">&nbsp;&nbsp;</span><span className="ty">"machine_learning"</span><span className="td">:</span><span className="tg">"90%"</span><span className="td">,</span></div>
-            <div className="tl"><span className="td">&nbsp;&nbsp;</span><span className="ty">"deep_learning"</span><span className="td">:</span><span className="tg">"85%"</span></div>
-            <div className="tl"><span className="td">{'}'}</span></div>
-            <div className="tl" style={{ height: 20 }} />
-            <div className="tl"><span className="tp">▶</span><span className="cursor-blink">█</span></div>
-          </div>
-        </div>
+      {/* ── Bottom: Scroll Hint ── */}
+      <div className="noir-hero-scroll-wrap">
+        <motion.div
+          className="noir-hero-scroll-hint"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 1.2 }}
+        >
+          <div className="noir-hero-scroll-line" />
+          <span>Scroll</span>
+        </motion.div>
       </div>
     </section>
   );

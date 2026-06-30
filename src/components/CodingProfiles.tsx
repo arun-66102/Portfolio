@@ -18,7 +18,7 @@ interface GfgStats { problemsSolved: string; codingScore: string; }
 interface GithubStats { repos: string; followers: string; }
 
 const DEFAULTS = {
-  leetcode: { problemsSolved: '400+', ranking: '233,555' },
+  leetcode: { problemsSolved: '445+', ranking: '233,555' },
   gfg: { problemsSolved: '100+', codingScore: '207', instituteRank: '33' },
   hackerrank: { problemsSolved: '100+', goldBadges: '5', hackos: '6064' },
   github: { repositories: '15+', contributions: '170+', followers: '20+' },
@@ -127,8 +127,8 @@ const CodingProfiles = () => {
     {
       id: 'leetcode',
       name: 'LeetCode',
-      icon: <Code2 size={22} />,
-      description: 'Problem solving and algorithm practice platform',
+      icon: <Code2 size={20} />,
+      description: 'Problem solving and algorithm practice',
       stats: [
         { label: 'Problems Solved', value: leetcodeStats?.problemsSolved ?? DEFAULTS.leetcode.problemsSolved },
         { label: 'Global Ranking', value: leetcodeStats?.ranking ?? DEFAULTS.leetcode.ranking },
@@ -140,7 +140,7 @@ const CodingProfiles = () => {
     {
       id: 'gfg',
       name: 'GeeksforGeeks',
-      icon: <Trophy size={22} />,
+      icon: <Trophy size={20} />,
       description: 'Coding practice and interview preparation',
       stats: [
         { label: 'Problems Solved', value: gfgStats?.problemsSolved ?? DEFAULTS.gfg.problemsSolved },
@@ -154,7 +154,7 @@ const CodingProfiles = () => {
     {
       id: 'hackerrank',
       name: 'HackerRank',
-      icon: <Target size={22} />,
+      icon: <Target size={20} />,
       description: 'Coding challenges and skill assessments',
       stats: [
         { label: 'Problems Solved', value: DEFAULTS.hackerrank.problemsSolved },
@@ -168,7 +168,7 @@ const CodingProfiles = () => {
     {
       id: 'github',
       name: 'GitHub',
-      icon: <Github size={22} />,
+      icon: <Github size={20} />,
       description: 'Open source contributions and projects',
       stats: [
         { label: 'Repositories', value: githubStats?.repos ?? DEFAULTS.github.repositories },
@@ -182,7 +182,7 @@ const CodingProfiles = () => {
   ], [gfgStats, githubStats, initialLoading, leetcodeStats]);
 
   const totalProblemsSolved = (() => {
-    const lc = leetcodeStats ? parseCount(leetcodeStats.problemsSolved, 400) : 400;
+    const lc = leetcodeStats ? parseCount(leetcodeStats.problemsSolved, 445) : 445;
     const gfg = gfgStats ? parseCount(gfgStats.problemsSolved, 100) : 100;
     const hr = parseCount(DEFAULTS.hackerrank.problemsSolved, 100);
     return lc + gfg + hr;
@@ -190,114 +190,95 @@ const CodingProfiles = () => {
   const totalRepos = githubStats ? parseCount(githubStats.repos, 15) : 15;
 
   return (
-    <section id="coding-profiles" ref={ref}>
-      {/* Section Header */}
-      <div className="cyber-header">
-        <div className="ch-num">03</div>
-        <div className="ch-title">
-          <span className="col-a">CODING</span>_<span className="col-b">PROFILES</span>
-        </div>
-      </div>
+    <section id="coding-profiles" ref={ref} className="noir-profiles">
+      <div className="noir-section-label">Live Stats</div>
+      <h2 className="noir-section-title">
+        Coding<br />
+        <em>Profiles</em>
+      </h2>
 
       {/* Refresh bar */}
-      <div className="refresh-bar" style={{ marginBottom: 40 }}>
-        <span className="refresh-text">Last updated: {lastUpdated ?? 'Fetching...'}</span>
+      <div className="noir-refresh-bar">
+        <span className="noir-refresh-text">Updated: {lastUpdated ?? 'Fetching...'}</span>
         <button
           type="button"
-          className="cyber-refresh-btn"
+          className="noir-refresh-btn"
           onClick={() => void fetchAllStats(true)}
           disabled={refreshing}
+          id="coding-profiles-refresh-btn"
         >
           <RefreshCw size={11} className={refreshing ? 'animate-spin' : ''} />
-          REFRESH_NOW
+          Refresh
         </button>
       </div>
 
       {/* Profile Cards */}
-      <div className="cert-cyber-grid">
+      <div className="noir-profiles-grid">
         {profiles.map((profile, index) => (
           <div
             key={profile.id}
-            className="cert-cyber primary"
+            className="noir-profile-card"
             style={{
               opacity: isVisible ? 1 : 0,
-              transform: isVisible ? 'translateY(0)' : 'translateY(24px)',
-              transition: `opacity 0.6s ease ${index * 100}ms, transform 0.6s ease ${index * 100}ms`,
+              transform: isVisible ? 'translateY(0)' : 'translateY(1.5rem)',
+              transition: `opacity 0.7s cubic-bezier(0.16,1,0.3,1) ${index * 100}ms,
+                           transform 0.7s cubic-bezier(0.16,1,0.3,1) ${index * 100}ms`,
             }}
           >
-            <div className="cert-corner primary-corner" />
-
-            <div className="cert-cyber-top">
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-                <div style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  width: 44, height: 44, border: '1px solid rgba(155,0,255,0.3)',
-                  background: 'rgba(155,0,255,0.1)', color: '#9b00ff',
-                }}>
-                  {profile.icon}
-                </div>
+            <div className="noir-profile-header">
+              <div className="noir-profile-icon-wrap">
+                <div className="noir-profile-icon">{profile.icon}</div>
                 <div>
-                  <div className="cert-cyber-name" style={{ fontSize: 18 }}>{profile.name}</div>
-                  <div style={{ fontFamily: "'Fira Code',monospace", fontSize: 10, color: 'rgba(240,238,255,0.3)', letterSpacing: 1 }}>
-                    @{profile.username}
-                  </div>
+                  <div className="noir-profile-name">{profile.name}</div>
+                  <div className="noir-profile-username">@{profile.username}</div>
                 </div>
               </div>
               <a
                 href={profile.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="cyber-card-btn"
-                style={{ width: 'auto', flex: 'none', padding: '8px 12px' }}
+                className="noir-profile-link"
+                aria-label={`Visit ${profile.name}`}
               >
                 <ExternalLink size={14} />
               </a>
             </div>
 
-            <div className="cert-cyber-body">
-              <p className="cert-cyber-desc">{profile.description}</p>
-              {/* Stat boxes */}
-              <div style={{ display: 'grid', gridTemplateColumns: `repeat(${profile.stats.length}, 1fr)`, gap: 8, marginTop: 16 }}>
-                {profile.stats.map((stat, i) => (
-                  <div key={i} className="profile-stat-box">
-                    <div className="profile-stat-val">
-                      {profile.loading ? <Loader2 size={16} className="animate-spin" style={{ margin: '0 auto', color: '#9b00ff' }} /> : stat.value}
-                    </div>
-                    <div className="profile-stat-lbl">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+            <p className="noir-profile-desc">{profile.description}</p>
 
-            <div className="cert-cyber-footer">
-              <a href={profile.url} target="_blank" rel="noopener noreferrer" className="cyber-card-btn btn-live" style={{ flex: 1 }}>
-                <ExternalLink size={13} /> VIEW PROFILE
-              </a>
+            <div className="noir-profile-stats">
+              {profile.stats.map((stat, i) => (
+                <div key={i} className="noir-profile-stat">
+                  <span className="noir-profile-stat-label">{stat.label}</span>
+                  <span className="noir-profile-stat-val">
+                    {profile.loading
+                      ? <Loader2 size={14} className="animate-spin" />
+                      : stat.value}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         ))}
       </div>
 
       {/* Summary */}
-      <div className="coding-summary">
-        <div className="coding-summary-title">CODING_JOURNEY_SUMMARY</div>
-        <div className="coding-summary-grid">
-          {[
-            { value: initialLoading ? null : `${totalProblemsSolved}+`, label: 'TOTAL_PROBLEMS' },
-            { value: initialLoading ? null : `${totalRepos}+`, label: 'PROJECTS_CREATED' },
-            { value: '170+', label: 'CODE_COMMITS' },
-            { value: '4', label: 'ACTIVE_PLATFORMS' },
-          ].map((item, i) => (
-            <div key={i} className="coding-sum-item">
-              <div className="coding-sum-val">
-                {item.value === null
-                  ? <Loader2 size={24} className="animate-spin" style={{ margin: '0 auto', color: '#9b00ff' }} />
-                  : item.value}
-              </div>
-              <div className="coding-sum-lbl">{item.label}</div>
-            </div>
-          ))}
-        </div>
+      <div className="noir-coding-summary">
+        {[
+          { value: initialLoading ? null : `${totalProblemsSolved}+`, label: 'Problems Solved' },
+          { value: initialLoading ? null : `${totalRepos}+`, label: 'Repositories' },
+          { value: '170+', label: 'Code Commits' },
+          { value: '4', label: 'Active Platforms' },
+        ].map((item, i) => (
+          <div key={i} className="noir-sum-item">
+            <span className="noir-sum-val">
+              {item.value === null
+                ? <Loader2 size={20} className="animate-spin" />
+                : item.value}
+            </span>
+            <div className="noir-sum-lbl">{item.label}</div>
+          </div>
+        ))}
       </div>
     </section>
   );
