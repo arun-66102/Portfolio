@@ -1,5 +1,4 @@
 import { ArrowUpRight, Github } from 'lucide-react';
-import { useRef } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
 interface Project {
