@@ -291,6 +291,55 @@ body::after {
   will-change: opacity;
 }
 
+/* Layer 4 — Action Buttons */
+.noir-hero-actions {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.noir-hero-btn {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1rem 2rem;
+  transition: all 0.3s var(--ease-out-expo);
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.noir-hero-btn.primary {
+  background: var(--noir-white);
+  color: var(--noir-black);
+}
+
+.noir-hero-btn.primary:hover {
+  background: transparent;
+  color: var(--noir-white);
+  border-color: var(--noir-white);
+}
+
+.noir-hero-btn.secondary {
+  background: transparent;
+  color: var(--noir-white);
+  border-color: var(--noir-border-str);
+}
+
+.noir-hero-btn.secondary:hover {
+  background: var(--noir-white);
+  color: var(--noir-black);
+  border-color: var(--noir-white);
+}
+
 .noir-hero-scroll-wrap {
   position: absolute;
   bottom: 4rem;

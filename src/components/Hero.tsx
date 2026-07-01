@@ -43,7 +43,22 @@ const Hero = () => {
           style={{ opacity: labelOpacity }}
           aria-hidden="true"
         >
-          ML Engineer &amp; AI Developer
+          AI Engineer &amp; Backend Developer
+        </motion.div>
+
+        {/* ── Layer 4: Action Buttons ── */}
+        <motion.div
+          className="noir-hero-actions"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.8 }}
+        >
+          <a href="/ARUNKUMAR K R_23CS020.pdf" download="ARUNKUMAR_KR_Resume.pdf" className="noir-hero-btn primary">
+            Resume Download
+          </a>
+          <a href="#contact" className="noir-hero-btn secondary">
+            Get in Touch
+          </a>
         </motion.div>
       </motion.div>
 
