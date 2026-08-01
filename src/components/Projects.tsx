@@ -23,7 +23,7 @@ const Projects = () => {
       description: 'Routes PDF documents to the appropriate department based on content analysis using Transformers and semantic search.',
       image: '/projects/routeX.png',
       technologies: ['Transformers', 'LLM', 'ChromaDB', 'Tesseract OCR', 'Semantic search'],
-      liveUrl: 'https://pdf-router.streamlit.app/',
+      liveUrl: 'https://pdf-summarizer-beta-two.vercel.app/',
       githubUrl: 'https://github.com/arun-66102/PDF-Summarizer',
       date: '2026',
       category: 'AI Automation',
